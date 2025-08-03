@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.4.1" xmlns="http://www.collada.org/2005/11/COLLADASchema">
+  <asset>
+    <contributor>
+      <author>Survivalcraft Moder</author>
+      <authoring_tool>Engine 0.0.0</authoring_tool>
+    </contributor>
+    <created>2020-12-11T15:28:00</created>
+    <modified>2020-12-11T15:28:00</modified>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_images />
+  <library_effects />
+  <library_materials />
+  <library_geometries>
+    <geometry id="Handle-mesh" name="Handle">
+      <mesh>
+        <source id="Handle-mesh-positions">
+          <float_array id="Handle-mesh-positions-array" count="36">0.02976495 0 -0.3298779 0.01445847 0.02651119 0.6431445 0.01445847 0.02651131 -0.3298777 0.02976495 0 0.6431445 -0.01615399 0.02651119 0.6431445 -0.01615393 0.02651131 -0.3298777 -0.03146034 0 0.6431445 -0.03146028 0 -0.3298779 -0.01615399 -0.02651137 0.6431445 -0.01615393 -0.02651131 -0.3298777 0.01445847 -0.02651137 0.6431445 0.01445847 -0.02651131 -0.3298777</float_array>
+          <technique_common>
+            <accessor source="#Handle-mesh-positions-array" count="12" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Handle-mesh-normals">
+          <float_array id="Handle-mesh-normals-array" count="48">0.7924073 0 -0.6099924 0.499989241 0.8660316 0 0.396199346 0.68625313 -0.6099858 1 0 0 -0.499989241 0.8660316 0 -0.396199346 0.68625313 -0.6099858 -1 0 0 -0.7924073 0 -0.6099924 -0.499989241 -0.8660316 0 -0.396199346 -0.68625313 -0.6099858 0.499989241 -0.8660316 0 0.396199346 -0.68625313 -0.6099858 0 5.62068E-06 -1 -1.37704E-05 0 -1 4.59018E-06 0 -1 0 -5.62068E-06 -1</float_array>
+          <technique_common>
+            <accessor source="#Handle-mesh-normals-array" count="16" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Handle-mesh-map">
+          <float_array id="Handle-mesh-map-array" count="96">0.01612579 0.937688 0.019315 0.981417 0.019315 0.937688 0.019315 0.981417 0.01612579 0.937688 0.01612579 0.981417 0.000179 0.937688 0.003368914 0.981417 0.003368914 0.937688 0.003368914 0.981417 0.000179 0.937688 0.000179 0.981417 0.003368914 0.937688 0.006557941 0.981417 0.006557941 0.937688 0.006557941 0.981417 0.003368914 0.937688 0.003368914 0.981417 0.006557941 0.937688 0.009747982 0.981417 0.009747982 0.937688 0.009747982 0.981417 0.006557941 0.937688 0.006557941 0.981417 0.009747982 0.937688 0.01293689 0.981417 0.01293689 0.937688 0.01293689 0.981417 0.009747982 0.937688 0.009747982 0.981417 0.01293689 0.937688 0.01612579 0.981417 0.01612579 0.937688 0.01612579 0.981417 0.01293689 0.937688 0.01293689 0.981417 0.000173 0.947642 0.01467978 0.957555 0.005008995 0.957555 0.01467978 0.957555 0.01467978 0.93773 0.01951599 0.947642 0.000173 0.947642 0.01467978 0.93773 0.01467978 0.957555 0.005008995 0.93773 0.01467978 0.93773 0.000173 0.947642</float_array>
+          <technique_common>
+            <accessor source="#Handle-mesh-map-array" count="48" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Handle-mesh-vertices">
+          <input semantic="POSITION" source="#Handle-mesh-positions" />
+        </vertices>
+        <triangles count="16">
+          <input semantic="VERTEX" source="#Handle-mesh-vertices" offset="0" />
+          <input semantic="NORMAL" source="#Handle-mesh-normals" offset="1" />
+          <input semantic="TEXCOORD" source="#Handle-mesh-map" offset="2" />
+          <p>0 0 0 2 2 2 1 1 1 1 1 3 3 3 5 0 0 4 2 2 6 5 5 8 4 4 7 4 4 9 1 1 11 2 2 10 5 5 12 7 7 14 6 6 13 6 6 15 4 4 17 5 5 16 7 7 18 9 9 20 8 8 19 8 8 21 6 6 23 7 7 22 9 9 24 11 11 26 10 10 25 10 10 27 8 8 29 9 9 28 11 11 30 0 0 32 3 3 31 3 3 33 10 10 35 11 11 34 7 12 36 5 12 38 2 12 37 2 13 39 0 13 41 11 13 40 7 14 42 2 14 44 11 14 43 9 15 45 7 15 47 11 15 46</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Head-mesh" name="Head">
+      <mesh>
+        <source id="Head-mesh-positions">
+          <float_array id="Head-mesh-positions-array" count="18">0 0 0.5122179 0.04077172 0.03828072 0.6786615 -0.04186636 0.03828072 0.6786615 -0.0418663 -0.03829187 0.6786615 0.04077172 -0.03829187 0.6786615 0 -2.20958E-07 0.9936616</float_array>
+          <technique_common>
+            <accessor source="#Head-mesh-positions-array" count="6" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Head-mesh-normals">
+          <float_array id="Head-mesh-normals-array" count="27">0 0.9745568 -0.224140674 -0.9697915 -7.44092E-07 -0.2439358 0 -0.9745426 -0.2242024 0.9712839 0 -0.2379236 0.707589269 0.7034385 -0.06702028 0.00167852582 0 0.999998569 -0.7084499 0.7024985 -0.06778383 -0.7084499 -0.7024985 -0.06778383 0.7075877 -0.7034372 -0.06705069</float_array>
+          <technique_common>
+            <accessor source="#Head-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Head-mesh-map">
+          <float_array id="Head-mesh-map-array" count="48">0.03142899 0.963276 0.04110378 0.972951 0.02175378 0.972951 0.03142899 0.963276 0.02175378 0.972951 0.02175378 0.953602 0.03142899 0.963276 0.02175378 0.953602 0.04110378 0.953602 0.03142899 0.963276 0.04110378 0.953602 0.04110378 0.972951 0.02204895 0.953329 0.03166478 0.987907 0.04127997 0.953329 0.02185398 0.953507 0.03158479 0.987628 0.04131484 0.953507 0.02168279 0.953364 0.03157579 0.987842 0.04146879 0.953364 0.02182585 0.953368 0.03159898 0.988158 0.04137295 0.953368</float_array>
+          <technique_common>
+            <accessor source="#Head-mesh-map-array" count="24" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Head-mesh-vertices">
+          <input semantic="POSITION" source="#Head-mesh-positions" />
+        </vertices>
+        <triangles count="8">
+          <input semantic="VERTEX" source="#Head-mesh-vertices" offset="0" />
+          <input semantic="NORMAL" source="#Head-mesh-normals" offset="1" />
+          <input semantic="TEXCOORD" source="#Head-mesh-map" offset="2" />
+          <p>0 0 0 2 0 2 1 0 1 0 1 3 3 1 5 2 1 4 0 2 6 4 2 8 3 2 7 0 3 9 1 3 11 4 3 10 1 4 12 2 6 14 5 5 13 2 6 15 3 7 17 5 5 16 3 7 18 4 8 20 5 5 19 4 8 21 1 4 23 5 5 22</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers />
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="未命名" name="未命名" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 1</matrix>
+        <node id="Handle" name="Handle" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_geometry url="#Handle-mesh" name="Handle" />
+        </node>
+        <node id="Head" name="Head" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_geometry url="#Head-mesh" name="Head" />
+        </node>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene" />
+  </scene>
+</COLLADA>

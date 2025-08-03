@@ -1,0 +1,8 @@
+<QingYuGame>
+   <!--男主角-->
+  <Parameter Name="AttackResilience" Guid="e88e0e33-2186-4384-98e4-c161a496f14f" new-Value="20" Type="float" />
+    <Parameter Name="AttackResilience" Guid="c83ef685-d311-42ba-bf4a-4e2994ef1859" new-Value="20" Type="float" />
+  <MemberComponentTemplate Name="Health" Guid="7d44674f-1ec9-4331-abf6-8e06ea5c6ff0" InheritanceParent="d7a50718-e128-4d0e-bac1-16f789d50ddd">
+   </MemberComponentTemplate>
+ <!--禁止瞎改(指改包者)-->
+</QingYuGame>
