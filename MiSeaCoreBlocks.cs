@@ -32,8 +32,8 @@ namespace MiSeaCore
             }
             public override int GetTextureSlotCount(int value)
             {
-            //Modified at 8: 33 on August 3rd, 2025. <<
-                return 32; //这个修改点应该是大小罢🤓
+            //Modified at 10: 02 on August 3rd, 2025. <<
+                return 16; //666填32的这辈子有了😭😭
             //>>
             }
             public override BlockDebrisParticleSystem CreateDebrisParticleSystem(SubsystemTerrain subsystemTerrain, Vector3 position, int value, float strength)
