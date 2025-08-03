@@ -14,13 +14,15 @@
         "outputPath": "D:\\!sctime\\MiSeaCores\\MiSeaCores\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "D:\\!sctime\\MiSeaCores\\MiSeaCores\\NuGet.Config",
           "C:\\Users\\xxl0502\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.fury.io/survivalcraftapi": {}
         },
         "frameworks": {
           "net9.0": {
