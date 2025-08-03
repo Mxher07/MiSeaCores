@@ -1,3 +1,0 @@
-<mod>
-	<Parameter Name="Class" Guid="4ecb005a-64f7-4036-b470-cc163fab65c2" new-Value="Game.SubsystemSeasonBehavior" Type="string"/>
-</mod>

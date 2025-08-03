@@ -1,9 +1,0 @@
-<BetterDrinking>
- <Drinking Result="PumpkinSoupBucketBlock" WaterValue="0.5" SicknessProbability="0"/>
- <Drinking Result="MilkBucketBlock" WaterValue="0.5" SicknessProbability="0"/>
- <Drinking Result="CookMeBlock" WaterValue="0.14" SicknessProbability="0"/>
- <Drinking Result="CookedMeatBlock" WaterValue="0.07" SicknessProbability="0"/>
- <Drinking Result="BreadBlock" WaterValue="0.02" SicknessProbability="0"/>
- <Drinking Result="SnowballBlock" WaterValue="0.05" SicknessProbability="0.01"/>
- <Drinking Result="TallGrassBlock" WaterValue="0.03" SicknessProbability="0.05"/>
-</BetterDrinking>
