@@ -1,0 +1,38 @@
+<Root>
+  <EntityTemplate Name="Snow_Wolf" Guid="c7dfa822-ba6e-4f3f-4063-0241823edf15" InheritanceParent="49a9845c-3810-4092-ba53-df213d10d563">
+            <MemberComponentTemplate Name="Creature" Guid="249d70d3-5ewe-4063-a660-04955ac089e9">
+                           <Parameter Name="DisplayName" Guid="42d4fbe0-wwww-403c-hyyy-5539220f42ac" Value="雪狼" Type="string" />
+              <Parameter Name="Category" Guid="507da620-ccaa-4f34-a139-hyyywwwabe14" Value="LandPredator" Type="Game.CreatureCategory" />
+              <Parameter Name="Description" Guid="7ef63359-cceb-417b-8www-7hyy59f7cb1e" Value="MSHXMod......" Type="string" />
+              <Parameter Name="KillVerbs" Guid="eb41096a-18df-458c-bhyy-www69f75663b" Value="killed" Type="string" />
+            </MemberComponentTemplate>
+            <MemberComponentTemplate Name="Health" Guid="fd68970a-2kkk-454d-bca3-3a86720d0164">
+              <Parameter Name="AttackResilience" Guid="00fdeb00-akkk-4fa1-8b9f-75bcd912d71b" Value="25" Type="float" />
+				 <Parameter Name="FallResilience" Guid="00fdeb00-akkk-4fa1-8b8f-75bcd912d71b" Value="5" Type="float" />
+            </MemberComponentTemplate>
+            <MemberComponentTemplate Name="Miner" Guid="49efc986-kkkk-4d3d-a2e3-69a33a21e33d" InheritanceParent="8acca888-ba39-464f-bcf5-6ae15e448c62">
+              <Parameter Name="AttackPower" Guid="51961fe7-0ef9-41f2-kkkk-8bfb3fe69bd7" Value="1.5" Type="float" />
+            </MemberComponentTemplate>
+            <MemberComponentTemplate Name="ChaseBehavior" Guid="2dfdcde0-ewe6-4076-a531-48a9fa434f7b" />
+            <MemberComponentTemplate Name="FourLeggedModel" Guid="8d91eewe-c7b9-4a11-a53f-3223852fe350">
+				 <Parameter Name="ModelName" Guid="00a0102d-f0d5-4a69-9ewe-0907c9790aca" Value="Models/Wolf" Type="string" />
+              <Parameter Name="TextureOverride" Guid="2217bc3c-8266-ewe2-8f9c-c655ecd3c8ff" Value="Textures/Ex/Snow_Wolf" Type="string" />
+            </MemberComponentTemplate>
+            <MemberComponentTemplate Name="HerdBehavior" Guid="b50ewe4d-79d3-4227-8d55-9c6a690e34bc">
+              <Parameter Name="HerdName" Guid="1df493df-6689-41c2-ewe5-64d02e091c59" Value="GrayWolf" Type="string" />
+ 				            </MemberComponentTemplate>
+            <MemberComponentTemplate Name="Loot" Guid="f2487a27-aw98-wb2b-baa3-1e62ce312017">
+              <ParameterSet Name="Loot" Guid="57646c8a-w8d3-4d2a-w841-d52b378f3fe7">
+                <Parameter Name="1" Guid="0ab73479-4ea5-4we9-w055-163807d37435" Value="LeatherBlock;6;8" Type="string" />
+                <Parameter Name="2" Guid="1bcb1e75-f307-4130-a99a-w36w66707918" Value="RawMeatBlock;1;4" Type="string" />
+              </ParameterSet>
+              <ParameterSet Name="LootOnFire" Guid="7757a63e-aw13-4fff-ab02-105ea96f3104" />
+            </MemberComponentTemplate> 
+            <ParameterSet Name="CreatureEggData" Guid="1awew4e9-b971-4b64-be45-11ab485b819f">
+              <Parameter Name="EggTypeIndex" Guid="02a62ewe-26f1-41c0-b77c-9891f9feae8c" Value="71" Type="int" />
+              <Parameter Name="Color" Guid="15a8448b-f57a-wew5-94e9-9d31f7cc2331" Value="100,100,150" Type="Color" />
+              <Parameter Name="DisplayName" Guid="3b3b99cd-ewew-4e4a-b4ef-bc64d6045595" Value="SnowWolfEgg" Type="string" />
+              <Parameter Name="TextureSlot" Guid="98db7435-2wew-4b31-8060-8abe5657ead7" Value="163" Type="int" />
+            </ParameterSet>
+			              </EntityTemplate>
+</Root>

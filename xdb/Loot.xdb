@@ -1,0 +1,12 @@
+<e>
+  <EntityTemplate Name="Player" Guid="4be6c1c5-d65d-4537-8a8b-a391969e6dc2">
+	<MemberComponentTemplate Name="Loot" Guid="3b448eab-9921-4821-b5f2-0d810f306c99" InheritanceParent="8547d74d-d347-4744-a839-14adf11731d0">
+		<ParameterSet Name="Loot" Guid="99917cd9-99a0-4ade-8c1f-deff17e38d0a">
+		<Parameter Name="1" Guid="99a99294-cbc9-4391-8284-ab7cb23a0e92" Value="GHBlock;1;5" Type="string" />
+		</ParameterSet>
+		<ParameterSet Name="LootOnFire" Guid="99dcffe2-d6f7-4fad-b052-6645f1014a72" />
+	</MemberComponentTemplate>
+</EntityTemplate>
+<Parameter Name="2" Guid="b3c4fb4b-6739-43db-a3c4-af655dba4ae2" new-Value="GHBlock;5;6" Type="string" />
+
+</e>

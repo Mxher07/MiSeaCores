@@ -1,0 +1,12 @@
+<CraftingTableWidget xmlns="runtime-namespace:Game">
+  <BevelledRectangleWidget Size="700, 420" BevelSize="3" />
+  <GridPanelWidget Name="InventoryGrid" CanvasWidget.Position="395, 40" ColumnsCount="4" RowsCount="4"/>
+  <GridPanelWidget Name="CraftingGrid" CanvasWidget.Position="15, 40" ColumnsCount="5" RowsCount="5"/>
+  <InventorySlotWidget Name="CraftingResultSlot" CanvasWidget.Position="418, 330" />
+  <InventorySlotWidget Name="CraftingRemainsSlot" CanvasWidget.Position="490, 330" >
+    <LabelWidget Text="[CraftingTableWidget:1]"  Color="0, 0, 0, 96" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  </InventorySlotWidget>
+  <LabelWidget CanvasWidget.Position="36, 8" Text="[CraftingTableWidget:2]"  Color="255, 255, 255, 192"/>
+  <LabelWidget CanvasWidget.Position="415, 8" Text="[CraftingTableWidget:3]"  Color="255, 255, 255, 192"/>
+  <ArrowLineWidget Color="0, 0, 0, 96" Width="8" ArrowWidth="24" AbsoluteCoordinates="true" PointsString="382, 368; 400, 368" />
+</CraftingTableWidget>
