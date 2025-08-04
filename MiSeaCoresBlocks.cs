@@ -154,7 +154,6 @@ namespace MiSeaCore {
     }
 
     public class RawMeBlock : FoodBlock {
-
         public RawMeBlock()
             : base("RawMeBlock")
         {
