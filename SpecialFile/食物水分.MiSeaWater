@@ -1,0 +1,12 @@
+<!-->
+Result: 方块类名:特殊值
+WaterValue: 回复的水分
+SicknessProbability: 生病概率
+注:如果该方块没有营养值将无法生效
+ <Drinking Result="" WaterValue="" SicknessProbability="0"/>
+<-->
+
+<MiSeaCore>
+ <Drinking Result="MilkBucketBlock" WaterValue="0.35" SicknessProbability="0"/>
+ <Drinking Result="RottenMilkBucketBlock" WaterValue="0.25" SicknessProbability="0"/>
+</MiSeaCore>

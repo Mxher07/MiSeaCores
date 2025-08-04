@@ -1,0 +1,8 @@
+<MiSeaWater>
+      <EntityTemplate Name="Player" Guid="4be6c1c5-d65d-4537-8a8b-a391969e6dc2">
+        <MemberComponentTemplate Name="BetterDrinking" Guid="dc0feddf-2016-6666-ccdd-abedbadf0000" InheritanceParent="81a44c6a-c30a-4f53-8d64-0c30aabab8f9">
+          <Parameter Name="Class" Guid="dc0feddf-2006-6666-ccdd-abedbadf0001" Value="MiSeaWater.ComponentMiSeaCoresDrinking" Type="string" />
+          <Parameter Name="Water" Guid="dc0feddf-2006-6666-ccdd-abedbadf0002" Value="0.95" Type="float" />
+        </MemberComponentTemplate>
+      </EntityTemplate>
+</MiSeaWater>
