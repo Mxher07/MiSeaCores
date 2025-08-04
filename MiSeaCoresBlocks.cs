@@ -1,7 +1,5 @@
-//Modified at 3: 11 on August 4rd, 2025. <<
 using Engine;
 using System;
-//我不知道Initialize是否必须实现，反正全写了
 //保持命名规范
 //namespace必须是MiSeaCore
 //镐类 [材质]PickaceBlock
@@ -12,15 +10,12 @@ using System;
 namespace MiSeaCore {
 
 //@ Steel/钢
-//锭在MiSeaCoresFlatBlocks里被实现，记得移过来
     public class SteelMacheteBlock : MacheteBlock {
         public SteelPickaxeBlock()
             : base(240, 27)
             {
             }
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
         public class SteelPickaceBlock : PickaxeBlock {
@@ -28,9 +23,7 @@ namespace MiSeaCore {
             : base(27, 240)
         {
         }
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
 //@ Red/红水晶(不加Crystal是因为好拼)
@@ -40,9 +33,7 @@ namespace MiSeaCore {
             : base(37, 252)
             {
             }
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
     public class RedPickaxeBlock : PickaxeBlock {
@@ -50,9 +41,7 @@ namespace MiSeaCore {
             : base(37, 252)
         {
         }
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
     public class RedAxeBlock : AxeBlock {
@@ -60,15 +49,11 @@ namespace MiSeaCore {
             : base(37, 252)
         {
         }
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
     public class RedOreBlock : CubeBlock {
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
     public class RedChunkBlock : ChunkBlock {
@@ -76,17 +61,13 @@ namespace MiSeaCore {
             : base(Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f), Matrix.CreateTranslation(0.0625f, 0.4375f, 0f), new Color(255,0,0), smooth: false)
             {
             }
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
 //@ Purple/紫水晶 --啥子老狗Purple不是Purpie
 
     public class PurpleOreBlock : CubeBlock {
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
     public class PurpleChunkBlock : ChunkBlock {
@@ -94,47 +75,32 @@ namespace MiSeaCore {
             : base(Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f), Matrix.CreateTranslation(0.0625f, 0.4375f, 0f), new Color(128, 0, 128), smooth: false)
             {
             }
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 //我留的源码为Beta1.5，这里紫水晶就俩，需要扩充
 
 //@ Gold/金
 
     public class GoldBlock : CubeBlock {
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
-    public class GoldenChunkBlock : ChunkBlock {
-        public GoldenChunkBlock()
+    public class GoldChunkBlock : ChunkBlock {
+        public GoldChunkBlock()
             : base(Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f), Matrix.CreateTranslation(0.0625f, 0.4375f, 0f), new Color(255,215,0), smooth: false)
             {
             }
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
-/*
-//============这个需要重写，但是我不会，记得改成用原版锭===========
-    public class GoldenIngotBlock : IronIngotBlock {
-        public override void Initialize() {
-            base.Initialize();
-        }
-        
-        public override void GenerateTerrainVertices(BlockGeometryGenerator generator, TerrainGeometry geometry, int value, int x, int y, int z) {
-            // 保留原有方法实现
-        }
-        
-        public override void DrawBlock(PrimitivesRenderer3D primitivesRenderer, int value, Color color, float size, ref Matrix matrix, DrawBlockEnvironmentData environmentData) {
-            // 保留原有方法实现
-            BlocksManager.DrawMeshBlock(primitivesRenderer, m_standaloneBlockMesh, Color.Yellow, 2f * size, ref matrix, environmentData);
-        }
+    public class GoldIngotBlock : MiSeaIngotBlock{
+        public GoldIngotBlock()
+            : base( IronIngot, 200, 200, 0, 255)
+            {
+            }
+        public static int Index = 114514;
     }
-    */
+
 
 //@ SeaStone/海蓝石
 
@@ -144,15 +110,11 @@ namespace MiSeaCore {
             //这里颜色好像不对，不管了
      {
      }
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
     
     public class SeaStoneBlock : CubeBlock {
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
 //@ Other/其他
@@ -162,31 +124,71 @@ namespace MiSeaCore {
             : base(Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f), Matrix.CreateTranslation(0.0625f, 0.4375f, 0f), new Color(0,0,0), smooth: false)
             {
             }
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
 //@ Me/大肉区(后面迁移到MiSeaCoresItems或者MiSeaCoresFoods)
     public class ManBlock : FoodBlock {
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
     public class CookMeBlock : FoodBlock {
         
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
     public class RawMeBlock : FoodBlock {
         
-        public override void Initialize() {
-            base.Initialize();
-        }
+        public static int Index = 114514;
     }
 
 }
+
+//@ MiSea/抽象类区
+public abstract class MiSeaIngotBlock : Block
+{
+    public string m_meshName;
+    public Color m_color;
+    public BlockMesh m_standaloneBlockMesh = new();
+
+    public MiSeaIngotBlock(string meshName, byte r, byte g, byte b, byte a)
+    {
+        m_meshName = meshName;
+        m_color = new Color(r, g, b, a);
+    }
+
+    public override void Initialize()
+    {
+        Model model = ContentManager.Get<Model>("Models/Ingots");
+        Matrix boneAbsoluteTransform = BlockMesh.GetBoneAbsoluteTransform(model.FindMesh(m_meshName).ParentBone);
+        m_standaloneBlockMesh.AppendModelMeshPart(
+            model.FindMesh(m_meshName).MeshParts[0], 
+            boneAbsoluteTransform * Matrix.CreateTranslation(0f, -0.1f, 0f), 
+            makeEmissive: false, 
+            flipWindingOrder: false, 
+            doubleSided: false, 
+            flipNormals: false, 
+            m_color); // 使用传入的颜色
+        base.Initialize();
+    }
+
+    public override void GenerateTerrainVertices(BlockGeometryGenerator generator, TerrainGeometry geometry, int value, int x, int y, int z)
+    {
+    }
+
+    public override void DrawBlock(PrimitivesRenderer3D primitivesRenderer, int value, Color color, float size, ref Matrix matrix, DrawBlockEnvironmentData environmentData)
+    {
+        BlocksManager.DrawMeshBlock(primitivesRenderer, m_standaloneBlockMesh,m_color, 2f * size, ref matrix, environmentData);
+    }
+}
+//该抽象类的使用方法
+/*
+public class TemplateBlock : MiSeaIngotBlock 
+{
+    public TemplateBlock()
+        : base("IronIngot", 255, 0, 0, 255) // 传入RGBA值,IronIngot(以原版铁材质做稳纹理染色，如果效果不佳修改Draw的m_color为color)，这里是红色不透明
+    {
+    }
+}
+*/
 //>>
