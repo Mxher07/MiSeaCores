@@ -173,9 +173,20 @@ namespace MiSeaCore
 
 #region Ghost/幽魂
 
+public class GhostBlock : FlatBlock
+{
+    public GhostBlock() : base() { }
+    public static int Index = 114514;
+
+    public override void DrawBlock(PrimitivesRenderer3D primitivesRenderer, int value, Color color, float size, ref Matrix matrix, DrawBlockEnvironmentData environmentData)
+    {
+        // 调用基类的绘制方法
+        base.DrawBlock(primitivesRenderer, value, color, size, ref matrix, environmentData);
+    }
+}
 public class GhostIngotBlock : MiSeaIngotBlock
 {
-                                                  //这里应该是紫色的
+    //这里应该是紫色的
     public GhostIngotBlock() : base("GhostIngot", 105, 29, 121, 200) { }
     public static int Index = 114514;
 
@@ -185,6 +196,8 @@ public class GhostIngotBlock : MiSeaIngotBlock
         base.DrawBlock(primitivesRenderer, value, color, size, ref matrix, environmentData);
     }
 }
+
+#endregion Ghost
 
 #region MiSea/抽象类区
 
