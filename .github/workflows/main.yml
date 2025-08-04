@@ -1,6 +1,6 @@
-name: AutoBuildOnPush
-
-on: [push]
+permissions:
+  contents: write
+  releases: write
 
 jobs:
   build-and-package:
@@ -73,22 +73,18 @@ jobs:
         asset_name: ${{ env.PACKAGE_NAME }}
         asset_content_type: application/zip
         
-    - name: Check for UpdataLogs and set release notes
+    - name: Set release notes
       if: success()
       run: |
-        # Check if UpdataLogs directory exists
-        if (Test-Path -Path "UpdataLogs" -PathType Container) {
-          $notes = Get-Content -Path "UpdataLogs/*" -Raw
-          $notes = $notes -replace "`n", "<br>"
-          $notes = $notes -replace '"', '\"'
-        } else {
-          $notes = "鸟和狗太懒了，什么都没有写喵-"
-        }
+        # 使用GitHub CLI更新release notes
+        if [ -d "UpdataLogs" ]; then
+          notes=$(cat UpdataLogs/*)
+        else
+          notes="鸟和狗太懒了，什么都没有写喵-"
+        fi
         
-        $release_id = (gh api -H "Accept: application/vnd.github.v3+json" "/repos/${{ github.repository }}/releases/tags/release-${{ github.run_id }}" | ConvertFrom-Json).id
-        
-        $body = @{
-          body = $notes
-        } | ConvertTo-Json
-        
-        gh api -X PATCH -H "Accept: application/vnd.github.v3+json" "/repos/${{ github.repository }}/releases/$release_id" --input - <<< "$body"
+        gh api \
+          --method PATCH \
+          -H "Accept: application/vnd.github.v3+json" \
+          /repos/${{ github.repository }}/releases/${{ steps.create_release.outputs.id }} \
+          -f body="$notes"
