@@ -1,0 +1,100 @@
+name: BuildOnPush
+
+on: [push]
+
+jobs:
+  build-and-package:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '9.0.x'
+        
+    - name: Build project
+      working-directory: ./
+      run: dotnet build
+      continue-on-error: false
+      
+    - name: Check build result
+      if: failure()
+      run: |
+        echo "::error::Build failed! Check the build logs above for details."
+        exit 1
+        
+    - name: Prepare files for packaging
+      if: success()
+      run: |
+        # Copy DLLs from bin/Debug/ to root
+        cp bin/Debug/net9.0/*.dll ./
+        
+        # Create staging directory
+        mkdir -p staging
+        
+        # Copy required files to staging
+        cp modinfo.json staging/
+        cp icon.png staging/
+        cp -r Assets/ staging/Assets/
+        cp *.dll staging/
+        
+        # Create zip file name
+        version=$(jq -r '.Version' modinfo.json)
+        zip_name="[API1.81]OTI-古茗岛${version}.scmod"
+        
+        # Create zip package
+        cd staging
+        Compress-Archive -Path * -DestinationPath "../$zip_name"
+        cd ..
+        
+        echo "PACKAGE_NAME=$zip_name" >> $GITHUB_ENV
+        
+    - name: Create release
+      if: success()
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: release-${{ github.run_id }}
+        release_name: ${{ env.PACKAGE_NAME }}
+        draft: false
+        prerelease: false
+        
+    - name: Upload release asset
+      if: success()
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./${{ env.PACKAGE_NAME }}
+        asset_name: ${{ env.PACKAGE_NAME }}
+        asset_content_type: application/zip
+        
+    - name: Set release notes
+      if: success() && exists('UpdataLogs')
+      run: |
+        release_id=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/${{ github.repository }}/releases/tags/release-${{ github.run_id }}" | jq -r '.id')
+        
+        notes=$(cat UpdataLogs/*)
+        
+        curl -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d "{\"body\":\"$notes\"}" \
+          "https://api.github.com/repos/${{ github.repository }}/releases/$release_id"
+          
+    - name: Set default release notes
+      if: success() && !exists('UpdataLogs')
+      run: |
+        release_id=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/${{ github.repository }}/releases/tags/release-${{ github.run_id }}" | jq -r '.id')
+        
+        curl -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"body":"鸟和狗太懒了，什么都没有写喵-"}' \
+          "https://api.github.com/repos/${{ github.repository }}/releases/$release_id"
