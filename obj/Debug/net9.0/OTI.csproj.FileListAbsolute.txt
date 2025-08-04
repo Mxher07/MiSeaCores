@@ -11,3 +11,16 @@ D:\!sctime\MiSeaCores\MiSeaCores\obj\Debug\net9.0\OTI.dll
 D:\!sctime\MiSeaCores\MiSeaCores\obj\Debug\net9.0\refint\OTI.dll
 D:\!sctime\MiSeaCores\MiSeaCores\obj\Debug\net9.0\OTI.pdb
 D:\!sctime\MiSeaCores\MiSeaCores\obj\Debug\net9.0\ref\OTI.dll
+C:\Users\Administrator\source\repos\OTI\bin\Debug\net9.0\OTI.deps.json
+C:\Users\Administrator\source\repos\OTI\bin\Debug\net9.0\OTI.dll
+C:\Users\Administrator\source\repos\OTI\bin\Debug\net9.0\OTI.pdb
+C:\Users\Administrator\source\repos\OTI\obj\Debug\net9.0\OTI.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\OTI\obj\Debug\net9.0\OTI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\source\repos\OTI\obj\Debug\net9.0\OTI.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\OTI\obj\Debug\net9.0\OTI.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\OTI\obj\Debug\net9.0\OTI.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\OTI\obj\Debug\net9.0\OTI.sourcelink.json
+C:\Users\Administrator\source\repos\OTI\obj\Debug\net9.0\OTI.dll
+C:\Users\Administrator\source\repos\OTI\obj\Debug\net9.0\refint\OTI.dll
+C:\Users\Administrator\source\repos\OTI\obj\Debug\net9.0\OTI.pdb
+C:\Users\Administrator\source\repos\OTI\obj\Debug\net9.0\ref\OTI.dll

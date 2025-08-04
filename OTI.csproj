@@ -17,4 +17,8 @@
     <Folder Include="SpecialFile\" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="setlocal enabledelayedexpansion&#xD;&#xA;if exist &quot;C:\Program Files\7-Zip\7z.exe&quot; (&#xD;&#xA;    set &quot;7ZIP_PATH=C:\Program Files\7-Zip\7z.exe&quot;&#xD;&#xA;    set &quot;OUTPUT_FILE=$(TargetDir)MiSeaCore[$(Configuration)].scmod&quot;&#xD;&#xA;    &#xD;&#xA;    if exist &quot;!OUTPUT_FILE!&quot; del &quot;!OUTPUT_FILE!&quot; /Q&#xD;&#xA;    &#xD;&#xA;    &quot;!7ZIP_PATH!&quot; a -tzip &quot;!OUTPUT_FILE!&quot; ^&#xD;&#xA;        &quot;$(ProjectDir)Assets\&quot; ^&#xD;&#xA;        &quot;$(ProjectDir)SpecialFile\&quot; ^&#xD;&#xA;        &quot;$(ProjectDir)icon.png&quot; ^&#xD;&#xA;        &quot;$(ProjectDir)modinod.json&quot; ^&#xD;&#xA;        &quot;$(TargetPath)&quot; ^&#xD;&#xA;        -r&#xD;&#xA;        &#xD;&#xA;    if %25errorlevel%25 equ 0 (&#xD;&#xA;        echo 成功生成: !OUTPUT_FILE!&#xD;&#xA;    ) else (&#xD;&#xA;        echo 压缩失败，错误代码: %25errorlevel%25&#xD;&#xA;        exit 1&#xD;&#xA;    )&#xD;&#xA;) else (&#xD;&#xA;    echo 未找到7zip，请检查安装路径是否正确&#xD;&#xA;    exit 1&#xD;&#xA;)&#xD;&#xA;endlocal" />
+  </Target>
+
 </Project>
