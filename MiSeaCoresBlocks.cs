@@ -1,4 +1,6 @@
 using Engine;
+using Engine.Graphics;
+using Game;
 using System;
 //保持命名规范
 //namespace必须是MiSeaCore
@@ -11,7 +13,7 @@ namespace MiSeaCore {
 
 //@ Steel/钢
     public class SteelMacheteBlock : MacheteBlock {
-        public SteelPickaxeBlock()
+        public SteelMacheteBlock()
             : base(240, 27)
             {
             }
@@ -19,7 +21,7 @@ namespace MiSeaCore {
     }
 
         public class SteelPickaceBlock : PickaxeBlock {
-        public SteelPickaxeBlock()
+        public SteelPickaceBlock()
             : base(27, 240)
         {
         }
@@ -45,7 +47,7 @@ namespace MiSeaCore {
     }
 
     public class RedAxeBlock : AxeBlock {
-    public RedPickaxeBlock()
+    public RedAxeBlock()
             : base(37, 252)
         {
         }
@@ -95,10 +97,14 @@ namespace MiSeaCore {
 
     public class GoldIngotBlock : MiSeaIngotBlock{
         public GoldIngotBlock()
-            : base( IronIngot, 200, 200, 0, 255)
+            : base( "IronIngot", 200, 200, 0, 255)
             {
             }
         public static int Index = 114514;
+
+        public override void DrawBlock(PrimitivesRenderer3D primitivesRenderer, int value, Color color, float size, ref Matrix matrix, DrawBlockEnvironmentData environmentData)
+        {
+        }
     }
 
 
@@ -130,14 +136,29 @@ namespace MiSeaCore {
 //@ Me/大肉区(后面迁移到MiSeaCoresItems或者MiSeaCoresFoods)
     public class ManBlock : FoodBlock {
         public static int Index = 114514;
+
+        public ManBlock()
+        : base("ManBlock")
+        {
+        }
     }
 
-    public class CookMeBlock : FoodBlock {
-        
+    public class CookMeBlock : FoodBlock
+    {
+
         public static int Index = 114514;
+        public CookMeBlock()
+            : base("CookMeBlock")
+        {
+        }
     }
 
     public class RawMeBlock : FoodBlock {
+
+        public RawMeBlock()
+            : base("RawMeBlock")
+        {
+        }
         
         public static int Index = 114514;
     }
