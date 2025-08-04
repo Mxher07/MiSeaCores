@@ -136,7 +136,7 @@ namespace MiSeaCore
             float immersionFactor = m_componentPlayer.ComponentBody.ImmersionFactor;
             float waterGain = m_random.Float(0.05f, 0.15f) * MathUtils.Max(immersionFactor, 0.25f);
             
-            m_componentPlayer.m_subsystemAudio.PlaySound("Audio/Sinking", 1f, 0f, position, 0.5f, true);
+            m_componentPlayer.m_subsystemAudio.PlaySound("Audio/Sinking", 0.3f, 0f, position, 0.5f, true);
             
             float overConsumption = MathUtils.Clamp((Water + waterGain - 1f) / 2f, 0f, 0.25f);
             Water += waterGain;
