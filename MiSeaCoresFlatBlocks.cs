@@ -3,7 +3,7 @@ using Engine.Graphics;
 using Game;
 using Silk.NET.OpenGLES;
 
-namespace MiSeaCore
+namespace MiSeaCores
 {
     public class MiSeaCoreBlocks
     {
@@ -21,7 +21,7 @@ namespace MiSeaCore
             public static int Index = 408;
             public MiSeaFlatBlock()
             //Modified at 8: 37 on August 3rd, 2025. <<
-               : base("Textures/FlatBlocks/MiSeaFlatBlock")  //所有flat方块的贴图整一张512x512的图片上,和原版一样，贴图是16x16
+               : base("Textures/FlatBlocks/MiSeaFlatBlock")  //所有flat方块的贴图整一张512x512的图片上,和原版一样，贴图是32x32
                // >>
             {
                 DefaultCategory = "MiSeaFlatBlock";
