@@ -5,7 +5,7 @@ using System;
 
 // 保持命名规范
 // namespace必须是MiSeaCore
-// 镐类 [材质]PickaceBlock
+// 镐类 [材质]PickaxeBlock
 // 剑类 [材质]MacheteBlock
 // 斧类 [材质]AxeBlock
 // 同材质最好放一起并使用 [材质] 标明
@@ -20,9 +20,9 @@ namespace MiSeaCore
         public static int Index = 114514;
     }
 
-    public class SteelPickaceBlock : PickaxeBlock 
+    public class SteelPickaxeBlock : PickaxeBlock 
     {
-        public SteelPickaceBlock() : base(27, 240) { }
+        public SteelPickaxeBlock() : base(27, 240) { }
         public static int Index = 114514;
     }
     
@@ -88,7 +88,7 @@ namespace MiSeaCore
 
     #region Gold/金系列方块
     
-    public class GoldBlock : CubeBlock 
+    public class GoldOreBlock : CubeBlock 
     {
         public static int Index = 114514;
     }
