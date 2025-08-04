@@ -3,7 +3,7 @@ using Engine.Graphics;
 using Game;
 using Silk.NET.OpenGLES;
 
-namespace MiSeaCore
+namespace MiSeaCores
 {
     public class MiSeaCoreBlocks
     {
@@ -20,7 +20,9 @@ namespace MiSeaCore
         {
             public static int Index = 408;
             public MiSeaFlatBlock()
-               : base("Textures/FlatBlocks/MiSeaFlatBlock")  //所有flat方块的贴图整一张256x256的图片上,和原版一样，贴图是16x16
+            //Modified at 8: 37 on August 3rd, 2025. <<
+               : base("Textures/FlatBlocks/MiSeaFlatBlock")  //所有flat方块的贴图整一张512x512的图片上,和原版一样，贴图是32x32
+               // >>
             {
                 DefaultCategory = "MiSeaFlatBlock";
                 InHandScale = 0.2f;
@@ -30,7 +32,9 @@ namespace MiSeaCore
             }
             public override int GetTextureSlotCount(int value)
             {
-                return 16;
+            //Modified at 10: 02 on August 3rd, 2025. <<
+                return 16; //666填32的这辈子有了😭😭
+            //>>
             }
             public override BlockDebrisParticleSystem CreateDebrisParticleSystem(SubsystemTerrain subsystemTerrain, Vector3 position, int value, float strength)
             {
@@ -67,12 +71,14 @@ namespace MiSeaCore
                         return "木之精华";
                     case 9:
                         return "火之精华";
+                    //Modified at 8: 34 on August 3rd, 2025. <<
                     case 10:
-                        return "金币";
+                        return "金飞盘";
                     case 11:
-                        return "铜币";
+                        return "铜飞盘";
                     case 12:
-                        return "铁币";
+                        return "铁飞盘";
+                    //>>
                     case 13:
                         return "草榻";
                     default:
@@ -91,16 +97,17 @@ namespace MiSeaCore
                 {
                     switch (data)
                     {
+                        //Modified at 8: 36 on August 3rd, 2025. <<
                         case 0:
-                            return "经过特殊处理的皮革，更加坚韧耐用";
+                            return "使用木棍支撑加固处理的皮革，更加坚韧耐用，可以用于制作衣服";
                         case 1:
-                            return "由植物纤维编织而成的绳索";
+                            return "由植物纤维编织而成的绳索，可以用于合成";
                         case 2:
-                            return "精细加工的皮革丝线";
+                            return "使用剪刀裁剪的皮革丝线，可以用于合成";
                         case 3:
-                            return "用于研磨和粉碎的工具";
+                            return "用于挖掘和合成的工具";
                         case 4:
-                            return "纯度较高的铜块";
+                            return "防爆用方块";
                         case 5:
                             return "蕴含草元素力量的精华";
                         case 6:
@@ -112,13 +119,14 @@ namespace MiSeaCore
                         case 9:
                             return "蕴含火元素力量的精华";
                         case 10:
-                            return "弥撒世界通用的金币";
+                            return "通过精炼矿物锭制作的飞盘，投掷伤害较高";
                         case 11:
-                            return "弥撒世界通用的铜币";
+                            return "通过精炼矿物锭制作的飞盘，投掷伤害较高";
                         case 12:
-                            return "弥撒世界通用的铁币";
+                            return "通过精炼矿物锭制作的飞盘，投掷伤害较高";
                         case 13:
-                            return "由草编织而成的简易床铺";
+                            return "由草编织而成的简易床铺，也可以用来防塌陷";
+                        //>>
                         default:
                             return "弥撒核心模组中的平面方块";
                     }
