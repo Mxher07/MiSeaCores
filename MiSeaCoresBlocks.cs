@@ -10,97 +10,112 @@ using System;
 // 斧类 [材质]AxeBlock
 // 同材质最好放一起并使用 [材质] 标明
 // 便于搜索
-namespace MiSeaCore 
+namespace MiSeaCore
 {
     #region Steel/钢材质系列方块
-    
-    public class SteelMacheteBlock : MacheteBlock 
+
+    public class SteelMacheteBlock : MacheteBlock
     {
         public SteelMacheteBlock() : base(240, 27) { }
         public static int Index = 114514;
     }
 
-    public class SteelPickaxeBlock : PickaxeBlock 
+    public class SteelPickaxeBlock : PickaxeBlock
     {
         public SteelPickaxeBlock() : base(27, 240) { }
         public static int Index = 114514;
     }
-    
+
+    public class SteelBlock() : CubeBlock
+    {
+        public static int Index = 114514;
+    }
+
     #endregion
 
     #region Red/红水晶系列方块
-    
-    public class RedMacheteBlock : MacheteBlock 
+
+    public class RedMacheteBlock : MacheteBlock
     {
         public RedMacheteBlock() : base(37, 252) { }
         public static int Index = 114514;
     }
 
-    public class RedPickaxeBlock : PickaxeBlock 
+    public class RedPickaxeBlock : PickaxeBlock
     {
         public RedPickaxeBlock() : base(37, 252) { }
         public static int Index = 114514;
     }
 
-    public class RedAxeBlock : AxeBlock 
+    public class RedAxeBlock : AxeBlock
     {
         public RedAxeBlock() : base(37, 252) { }
         public static int Index = 114514;
     }
 
-    public class RedOreBlock : CubeBlock 
+    public class RedOreBlock : CubeBlock
     {
         public static int Index = 114514;
     }
 
-    public class RedChunkBlock : ChunkBlock 
+    public class RedChunkBlock : ChunkBlock
     {
         public RedChunkBlock() : base(
-            Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f), 
-            Matrix.CreateTranslation(0.0625f, 0.4375f, 0f), 
-            new Color(255, 0, 0), 
-            smooth: false) { }
-        
+            Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f),
+            Matrix.CreateTranslation(0.0625f, 0.4375f, 0f),
+            new Color(255, 0, 0),
+            smooth: false)
+        { }
+
         public static int Index = 114514;
     }
-    
+
+    public class RedShovelBlock : ShovelBlock
+    {
+        public RedShovelBlock() : base(37, 252) { }
+        public static int Index = 114514;
+    }
+
     #endregion
 
     #region Purple/紫水晶系列方块
-    
-    public class PurpleOreBlock : CubeBlock 
+
+    public class PurpleOreBlock : CubeBlock
     {
         public static int Index = 114514;
     }
 
-    public class PurpleChunkBlock : ChunkBlock 
+    public class PurpleChunkBlock : ChunkBlock
     {
         public PurpleChunkBlock() : base(
-            Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f), 
-            Matrix.CreateTranslation(0.0625f, 0.4375f, 0f), 
-            new Color(128, 0, 128), 
-            smooth: false) { }
-        
+            Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f),
+            Matrix.CreateTranslation(0.0625f, 0.4375f, 0f),
+            new Color(128, 0, 128),
+            smooth: false)
+        { }
+
         public static int Index = 114514;
     }
-    
+
+
     #endregion
 
     #region Gold/金系列方块
-    
-    public class GoldOreBlock : CubeBlock 
+
+    public class GoldOreBlock : CubeBlock
     {
         public static int Index = 114514;
     }
 
-    public class GoldChunkBlock : ChunkBlock 
+    public class GoldChunkBlock : ChunkBlock
     {
         public GoldChunkBlock() : base(
-            Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f), 
-            Matrix.CreateTranslation(0.0625f, 0.4375f, 0f), 
-            new Color(255, 215, 0), 
-            smooth: false) { }
-        
+            Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f),
+            Matrix.CreateTranslation(0.0625f, 0.4375f, 0f),
+            new Color(255, 215, 0),
+            smooth: false)
+        { }
+
         public static int Index = 114514;
     }
 
@@ -115,43 +130,60 @@ namespace MiSeaCore
             base.DrawBlock(primitivesRenderer, value, color, size, ref matrix, environmentData);
         }
     }
-    
+
     #endregion
 
     #region SeaStone/海蓝石系列方块
-    
-    public class SeaStoneChunkBlock : ChunkBlock 
+
+    public class SeaStoneChunkBlock : ChunkBlock
     {
         public SeaStoneChunkBlock() : base(
-            Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f), 
-            Matrix.CreateTranslation(0.0625f, 0.4375f, 0f), 
-            new Color(37, 255, 37), 
-            smooth: false) { }
-        
+            Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f),
+            Matrix.CreateTranslation(0.0625f, 0.4375f, 0f),
+            new Color(37, 255, 37),
+            smooth: false)
+        { }
+
         public static int Index = 114514;
     }
-    
-    public class SeaStoneBlock : CubeBlock 
+
+    public class SeaStoneBlock : CubeBlock
     {
         public static int Index = 114514;
     }
-    
+
     #endregion
 
     #region Other/其他系列方块
-    
-    public class CoalPowderBlock : ChunkBlock 
+
+    public class CoalPowderBlock : ChunkBlock
     {
         public CoalPowderBlock() : base(
-            Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f), 
-            Matrix.CreateTranslation(0.0625f, 0.4375f, 0f), 
-            new Color(0, 0, 0), 
-            smooth: false) { }
-        
+            Matrix.CreateRotationX(1f) * Matrix.CreateRotationZ(0f),
+            Matrix.CreateTranslation(0.0625f, 0.4375f, 0f),
+            new Color(0, 0, 0),
+            smooth: false)
+        { }
+
         public static int Index = 114514;
     }
-    
+
     #endregion
+}
+
+#region Ghost/幽魂
+
+public class GhostIngotBlock : MiSeaIngotBlock
+{
+                                                  //这里应该是紫色的
+    public GhostIngotBlock() : base("GhostIngot", 105, 29, 121, 200) { }
+    public static int Index = 114514;
+
+    public override void DrawBlock(PrimitivesRenderer3D primitivesRenderer, int value, Color color, float size, ref Matrix matrix, DrawBlockEnvironmentData environmentData)
+    {
+        // 调用基类的绘制方法
+        base.DrawBlock(primitivesRenderer, value, color, size, ref matrix, environmentData);
+    }
 }
 
 #region MiSea/抽象类区
@@ -183,7 +215,7 @@ public abstract class MiSeaIngotBlock : Block
     {
         Model model = ContentManager.Get<Model>("Models/Ingots");
         Matrix boneAbsoluteTransform = BlockMesh.GetBoneAbsoluteTransform(model.FindMesh(m_meshName).ParentBone);
-        
+
         m_standaloneBlockMesh.AppendModelMeshPart(
             model.FindMesh(m_meshName).MeshParts[0],
             boneAbsoluteTransform * Matrix.CreateTranslation(0f, -0.1f, 0f),
@@ -192,7 +224,7 @@ public abstract class MiSeaIngotBlock : Block
             doubleSided: false,
             flipNormals: false,
             m_color);
-            
+
         base.Initialize();
     }
 
