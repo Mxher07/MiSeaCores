@@ -60,7 +60,7 @@ namespace MiSeaCores
             /// <returns>返回固定值16。</returns>
             public override int GetTextureSlotCount(int value)
             {
-                return 16; 
+                return 16;
             }
 
             /// <summary>

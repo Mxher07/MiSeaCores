@@ -18,7 +18,7 @@ namespace MiSeaCore
         public float WaterValue;
         public float SicknessProbability;
     }
-    
+
     /// <summary>
     /// 玩家饮水系统组件，实现饮水机制、UI显示和脱水效果。
     /// </summary>
@@ -27,7 +27,7 @@ namespace MiSeaCore
         private float m_water;
         private float m_lastWater;
         private Game.Random m_random = new Game.Random();
-        
+
         private SubsystemGameInfo m_subsystemGameInfo;
         private SubsystemTime m_subsystemTime;
         private ComponentPlayer m_componentPlayer;
@@ -58,29 +58,29 @@ namespace MiSeaCore
                 return;
 
             UpdateWater();
-            
+
             Widget guiModalPanel = m_componentPlayer.ComponentGui.ModalPanelWidget;
             if (guiModalPanel is ClothingWidget clothingWidget)
             {
                 BevelledButtonWidget waterButton = clothingWidget.Children.Find<BevelledButtonWidget>("WaterBotton", true);
                 Widget iconWidget = waterButton.Children.Find<RectangleWidget>("WaterIcon", true);
-                
+
                 Vector3 playerPosition = m_componentPlayer.ComponentBody.Position;
                 Vector3 cellPosition = new Vector3(
-                    Terrain.ToCell(playerPosition.X), 
-                    Terrain.ToCell(playerPosition.Y) - 1, 
+                    Terrain.ToCell(playerPosition.X),
+                    Terrain.ToCell(playerPosition.Y) - 1,
                     Terrain.ToCell(playerPosition.Z)
                 );
-                
+
                 int cellX = Terrain.ToCell(cellPosition.X);
                 int cellY = Terrain.ToCell(cellPosition.Y);
                 int cellZ = Terrain.ToCell(cellPosition.Z);
 
                 bool isNearWater = CheckWaterInSurroundingCells(cellX, cellY, cellZ);
-                
+
                 float immersion = m_componentPlayer.ComponentBody.ImmersionFactor;
                 bool isSneaking = m_componentPlayer.ComponentBody.IsSneaking;
-                
+
                 // 根据玩家是否在水中或靠近水源设置图标颜色
                 if (immersion > 0.25f)
                     iconWidget.ColorTransform = Color.InkBlue * immersion;
@@ -135,17 +135,17 @@ namespace MiSeaCore
         {
             float immersionFactor = m_componentPlayer.ComponentBody.ImmersionFactor;
             float waterGain = m_random.Float(0.05f, 0.15f) * MathUtils.Max(immersionFactor, 0.25f);
-            
+
             m_componentPlayer.m_subsystemAudio.PlaySound("Audio/Sinking", 0.3f, 0f, position, 0.5f, true);
-            
+
             float overConsumption = MathUtils.Clamp((Water + waterGain - 1f) / 2f, 0f, 0.25f);
             Water += waterGain;
-            
+
             if (m_random.Bool(0.00083116884f))
             {
                 HandleSickness();
             }
-            
+
             if (overConsumption > 0f)
             {
                 HandleOverConsumption(overConsumption);
@@ -158,7 +158,7 @@ namespace MiSeaCore
         private void HandleSickness()
         {
             ComponentSickness sicknessComponent = m_componentPlayer.ComponentSickness;
-            
+
             if (!sicknessComponent.IsSick && sicknessComponent.m_sicknessDuration == 0f)
             {
                 sicknessComponent.StartSickness();
@@ -177,13 +177,13 @@ namespace MiSeaCore
         private void HandleOverConsumption(float overConsumptionAmount)
         {
             m_componentPlayer.ComponentHealth.Injure(overConsumptionAmount / 2f, null, false, "\n撑死了?\nSupport to death");
-            
+
             if (m_componentPlayer.ComponentSickness.m_sicknessDuration == 0f)
             {
                 m_componentPlayer.ComponentSickness.StartSickness();
                 m_componentPlayer.ComponentSickness.m_sicknessDuration = 0.5f;
             }
-            
+
             m_componentPlayer.ComponentVitalStats.Food -= overConsumptionAmount;
         }
 
@@ -199,7 +199,7 @@ namespace MiSeaCore
             m_componentPlayer = Entity.FindComponent<ComponentPlayer>(true);
             m_subsystemAudio = Project.FindSubsystem<SubsystemAudio>(true);
             m_componentCreature = Entity.FindComponent<ComponentCreature>(true);
-            
+
             Water = valuesDictionary.GetValue<float>("Water");
             m_lastWater = Water;
         }
@@ -246,7 +246,7 @@ namespace MiSeaCore
                 TextureLinearFilter = false,
                 Value = 0.56f
             };
-            
+
             ValueBarWidget upperBar = new ValueBarWidget
             {
                 Name = "WaterU",
@@ -262,7 +262,7 @@ namespace MiSeaCore
                 BarSubtexture = ContentManager.Get<Subtexture>("MiSeaCoresDrinking/WaterU"),
                 TextureLinearFilter = true
             };
-            
+
             CanvasWidget container = new CanvasWidget
             {
                 Name = "MiSeaCoresWaterBarList",
@@ -270,20 +270,20 @@ namespace MiSeaCore
                 HorizontalAlignment = WidgetAlignment.Center,
                 Margin = new Vector2(0f, 90f)
             };
-            
+
             CanvasWidget barContainer = new CanvasWidget();
             StackPanelWidget stackPanel = new StackPanelWidget
             {
                 Direction = LayoutDirection.Horizontal
             };
-            
+
             barContainer.Children.Add(lowerBar);
             barContainer.Children.Add(upperBar);
-            
+
             stackPanel.Children.Add(new CanvasWidget { Size = new Vector2(300f, 0f) });
             stackPanel.Children.Add(new CanvasWidget { Size = new Vector2(0f, 0f) });
             stackPanel.Children.Add(barContainer);
-            
+
             container.Children.Add(stackPanel);
             m_componentPlayer.ComponentGui.ControlsContainerWidget.Children.Add(container);
         }
@@ -306,7 +306,7 @@ namespace MiSeaCore
         {
             CanvasWidget waterBarList = m_componentPlayer.ComponentGui.ControlsContainerWidget
                 .Children.Find<CanvasWidget>("MiSeaCoresWaterBarList", true);
-                
+
             if (waterBarList != null)
             {
                 m_componentPlayer.ComponentGui.ControlsContainerWidget.Children.Remove(waterBarList);
@@ -361,12 +361,12 @@ namespace MiSeaCore
                 {
                     m_componentPlayer.ComponentHealth.Injure(0.08f, null, false, "你渴死了.");
                     m_componentPlayer.ComponentVitalStats.Stamina -= 0.1f;
-                    
+
                     if (m_subsystemGameInfo.WorldSettings.GameMode != GameMode.Creative)
                     {
                         m_componentPlayer.ComponentVitalStats.Sleep -= 0.005f;
                     }
-                    
+
                     m_componentPlayer.ComponentVitalStats.Wetness -= 0.2f;
                 }
             }

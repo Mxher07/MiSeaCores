@@ -1,4 +1,0 @@
-<mod>
-	<Parameter Name="Class" Guid="566663a5-0480-45c8-9266-18c8060a236c" new-Value="Game.ComponentNewCraftingTable" Type="string" />
-	<Parameter Name="SlotsCount" Guid="25ded02c-224e-402f-84e8-08ba76134dc0" new-Value="27" Type="int" />
-</mod>
