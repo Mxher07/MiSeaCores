@@ -1,7 +1,3 @@
 <MiSeaCores>
-    <ProjectTemplate Name="Project" Guid="85023bf8-1c90-4dd1-9442-e6c13691d078">
-        <MemberSubsystemTemplate Name="KuangWuShengCheng" Guid="Guid" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
-		<Parameter Name="Class" Guid="Guid" Value="Game.KuangWuShengCheng" Type="string" />
-        </MemberSubsystemTemplate>
-    </ProjectTemplate>
+	<Parameter Name="Class" Guid="e2636c38-f179-4aa1-b087-ed6920d66e8e" new-Value="PerfectWorld.NewSubsystemTerrain" Type="string"/>
 </MiSeaCores>
