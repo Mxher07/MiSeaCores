@@ -1,3 +1,3 @@
 <MiSeaCores>
-	<Parameter Name="Class" Guid="e2636c38-f179-4aa1-b087-ed6920d66e8e" new-Value="PerfectWorld.NewSubsystemTerrain" Type="string"/>
+	<Parameter Name="Class" Guid="e2636c38-f179-4aa1-b087-ed6920d66e8e" new-Value="MiSeaCore.MiSeaCoreSubsystemTerrain" Type="string"/>
 </MiSeaCores>
