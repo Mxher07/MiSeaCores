@@ -5,7 +5,11 @@
       "aaa"
       "aaaa"
     </Recipe>
-    <Recipe Result="CraftingTableBlock" ResultCount="1" Remains="PlanksBlock" RemainsCount="4" RequiredHeatLevel="0" a="stonechunk" b="wood" c="xy" Description="制作工作台">
+    <Recipe Result="WLBlock" ResultCount="1" RequiredHeatLevel="0" a="grassblock" Description="制作不会塌陷的方块">
+     "aa"
+     "aa"
+     </Recipe>
+    <Recipe Result="CraftingTableBlock" ResultCount="1" Remains="PlanksBlock" RemainsCount="4" RequiredHeatLevel="0" a="stonechunk" b="wood" c="miseaflat:0" Description="制作工作台">
       "ac"
       "bb"
     </Recipe>
@@ -70,13 +74,6 @@
     <Recipe Result="RedChunkBlock" ResultCount="1" RequiredHeatLevel="2" a="redore" Description="熔炼红晶">
       "a"
       </Recipe>
-      <Recipe Result="RawMeBlock" ResultCount="1" RequiredHeatLevel="0" a="rawmeat" Description="制作肉排">
-      "a"
-      "a"
-      </Recipe>
-      <Recipe Result="CookMeBlock" ResultCount="1" RequiredHeatLevel="1" a="rawme" Description="烤肉">
-      "a"
-      </Recipe>
       <Recipe Result="GoldenIngotBlock" ResultCount="1" RequiredHeatLevel="2" a="goldenchunk" Description="熔炼黄金">
       "a"
       </Recipe>
@@ -86,9 +83,8 @@
       <Recipe Result="SteelIngotBlock" ResultCount="1" RequiredHeatLevel="2" a="ironingot" b="diamond" Description="制作钢">
       "ab"
       </Recipe>
-      <Recipe Result="CoalPowderBlockcoalpowder" ResultCount="20" Remains="StoneAxeBlock" RemainsCount="1" RequiredHeatLevel="0" a="stoneaxe" b="coalchunk" Description="敲碎煤炭">
-      "aba"
-      "aaa"
+      <Recipe Result="CoalPowderBlockcoalpowder" ResultCount="4" Remains="StoneAxeBlock" RemainsCount="1" RequiredHeatLevel="0" a="stoneaxe" b="coalchunk" Description="敲碎煤炭">
+      "ba"
       </Recipe>
       <Recipe Result="ClothingBlock:48" ResultCount="1" RequiredHeatLevel="0" RequiredPlayerLevel="4" a="purpiechunk" b="clothing:11" Description="制作紫晶头盔">
       " a"
@@ -108,15 +104,15 @@
       " a"
       "aba"
       </Recipe>
-      <Recipe Result="WLBlock" ResultCount="3" RequiredHeatLevel="0" a="stick" b="leather" Description="制作硬质皮革">
+      <Recipe Result="HardedLeatherBlock" ResultCount="3" RequiredHeatLevel="0" a="stick" b="leather" Description="制作硬质皮革">
       "bbb"
       "aaa"
       </Recipe>
-      <Recipe Result="ClothingBlock:52" ResultCount="1" RequiredHeatLevel="0" a="purpiechunk" Description="制作紫晶袖甲">
+      <Recipe Result="ClothingBlock:52" ResultCount="1" RequiredHeatLevel="0" a="purplechunk" Description="制作紫晶袖甲">
       "a a"
       "a a"
       </Recipe>
-      <Recipe Result="ClothingBlock:54" ResultCount="1" RequiredHeatLevel="0" a="wl" Description="制作">
+      <Recipe Result="ClothingBlock:54" ResultCount="1" RequiredHeatLevel="0" a="" Description="用硬皮革制作">
       "a"
       "a"
       "a"
@@ -131,12 +127,12 @@
       "aaa"
       "aaa"
     </Recipe>
-    <Recipe Result="ClothingBlock:53" ResultCount="1" RequiredHeatLevel="0" a="wl" b="ps" Description="制作">
+    <Recipe Result="ClothingBlock:53" ResultCount="1" RequiredHeatLevel="0" a="hardedleather" b="ps" Description="制作">
       "bb"
       "aa"
       "aa"
     </Recipe>
-    <Recipe Result="XYBlock" ResultCount="2" RequiredHeatLevel="0" a="tallgrass" Description="制作纤维绳">
+    <Recipe Result="MiSeaFlatBlock:0" ResultCount="2" RequiredHeatLevel="0" a="tallgrass" Description="制作纤维绳">
       "aa"
       "aa"
       </Recipe>
@@ -149,11 +145,11 @@
     <Recipe Result="MiSeaFlatBlock:1" ResultCount="4" RequiredHeatLevel="0" a="stonescissors" b="leather" Description="割开皮革">
       "ab"
       </Recipe>
-      <Recipe Result="MiSeaFlatBlock:2" ResultCount="20" RequiredHeatLevel="0" a="stick" b="xy" c="stonechunk" Description="制作碎石锤子">
+      <Recipe Result="MiSeaFlatBlock:2" ResultCount="20" RequiredHeatLevel="0" a="stick" b="miseaflat:0" c="stonechunk" Description="制作碎石锤子">
       "c "
       "ab"
       </Recipe>
-      <Recipe Result="StoneScissorsBlock" ResultCount="20" RequiredHeatLevel="0" a="stick" b="xy" c="stonechunk" Description="制作碎石剪刀">
+      <Recipe Result="StoneScissorsBlock" ResultCount="20" RequiredHeatLevel="0" a="stick" b="miseaflat:0" c="stonechunk" Description="制作碎石剪刀">
       "cc"
       "ab"
       </Recipe>
@@ -162,7 +158,7 @@
       "aaa"
       "aaa"
       </Recipe>
-      <Recipe Result="SteelBlock" ResultCount="1" RequiredHeatLevel="0" a="steelingot" Description="Make Steel Block">
+      <Recipe Result="SteelBlock" ResultCount="1" RequiredHeatLevel="0" a="steelingot" Description="制作钢块">
       "aaa"
       "aaa"
       "aaa"
@@ -227,26 +223,26 @@
       " a"
       "aba"
       </Recipe>
-      <Recipe Result="ClothingBlock:64" ResultCount="1" RequiredHeatLevel="0" RequiredPlayerLevel="4" a="wl" Description="制作硬皮革帽">
+      <Recipe Result="ClothingBlock:64" ResultCount="1" RequiredHeatLevel="0" RequiredPlayerLevel="1" a="hardedleather" Description="制作硬皮革帽">
       " a"
       "a a"
       </Recipe>
-      <Recipe Result="ClothingBlock:38" ResultCount="1" RequiredHeatLevel="0" RequiredPlayerLevel="2" a="ghost" b="clothing:23" Description="Make cursed clothes">
+      <Recipe Result="ClothingBlock:38" ResultCount="1" RequiredHeatLevel="0" RequiredPlayerLevel="2" a="ghost" b="clothing:23" Description="制作被诅咒的衣服">
       " a"
       "aba"
       " a"
       </Recipe>
-      <Recipe Result="ClothingBlock:39" ResultCount="1" RequiredHeatLevel="0" RequiredPlayerLevel="2" a="ghost" b="clothing:28" Description="Make cursed clothes">
+      <Recipe Result="ClothingBlock:39" ResultCount="1" RequiredHeatLevel="0" RequiredPlayerLevel="2" a="ghost" b="clothing:28" Description="制作被诅咒的衣服">
       " a"
       "aba"
       " a"
       </Recipe>
-      <Recipe Result="ClothingBlock:65" ResultCount="1" RequiredHeatLevel="0" RequiredPlayerLevel="2" a="ghostingot" b="clothing:38" Description="Make cursed clothes">
+      <Recipe Result="ClothingBlock:65" ResultCount="1" RequiredHeatLevel="0" RequiredPlayerLevel="2" a="ghostingot" b="clothing:38" Description="制作被诅咒的衣服">
       " a"
       "aba"
       " a"
       </Recipe>
-      <Recipe Result="ClothingBlock:66" ResultCount="1" RequiredHeatLevel="0" RequiredPlayerLevel="2" a="ghostingot" b="clothing:39" Description="Make cursed clothes">
+      <Recipe Result="ClothingBlock:66" ResultCount="1" RequiredHeatLevel="0" RequiredPlayerLevel="2" a="ghostingot" b="clothing:39" Description="制作被诅咒的衣服">
       " a"
       "aba"
       " a"
