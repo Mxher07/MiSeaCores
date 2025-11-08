@@ -4,11 +4,11 @@ namespace Game
 {
     public static class LightingManager
     {
-        public static readonly float LightAmbient = 0.5f;
+        public static readonly float LightAmbient = 0.425f; // 降低15%
 
-        public static readonly Vector3 DirectionToLight1 = new Vector3(0.12f, 0.25f, 0.34f);
+        public static readonly Vector3 DirectionToLight1 = new Vector3(0.102f, 0.2125f, 0.289f); // 降低15%
 
-        public static readonly Vector3 DirectionToLight2 = new Vector3(-0.12f, 0.25f, -0.34f);
+        public static readonly Vector3 DirectionToLight2 = new Vector3(-0.102f, 0.2125f, -0.289f); // 降低15%
 
         public static readonly float[] LightIntensityByLightValue = new float[16];
 

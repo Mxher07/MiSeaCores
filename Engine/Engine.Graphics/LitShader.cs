@@ -239,18 +239,18 @@ namespace Engine.Graphics
 			}
 			if (lightsCount >= 1)
 			{
-				AmbientLightColor = new Vector3(0.2f);
-				DiffuseLightColor1 = new Vector3(0.8f);
+				AmbientLightColor = new Vector3(0.17f); // 降低15%
+				DiffuseLightColor1 = new Vector3(0.68f); // 降低15%
 				LightDirection1 = Vector3.Normalize(new Vector3(1f, -1f, 1f));
 			}
 			if (lightsCount >= 2)
 			{
-				DiffuseLightColor2 = new Vector3(0.4f);
+				DiffuseLightColor2 = new Vector3(0.34f); // 降低15%
 				LightDirection2 = Vector3.Normalize(new Vector3(-1f, -0.5f, -0.25f));
 			}
 			if (lightsCount >= 3)
 			{
-				DiffuseLightColor3 = new Vector3(0.2f);
+				DiffuseLightColor3 = new Vector3(0.17f); // 降低15%
 				LightDirection3 = Vector3.Normalize(new Vector3(0f, 1f, 0f));
 			}
 			if (useFog)
