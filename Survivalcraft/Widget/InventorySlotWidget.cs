@@ -257,8 +257,9 @@ namespace Game
             array[5] = obj6;
             var obj10 = new LabelWidget
             {
+                Size = new Vector2(12f, 12f),
                 Text = "Split",
-                Color = new Color(255, 64, 0),
+                Color = new Color(0, 128, 255),
                 HorizontalAlignment = WidgetAlignment.Near,
                 VerticalAlignment = WidgetAlignment.Near,
                 Margin = new Vector2(2f, 0f)
@@ -458,7 +459,7 @@ namespace Game
                 }
                 if (IsSplitMode())
                 {
-                    m_highlightWidget.OutlineColor = new Color(255, 64, 0);
+                    m_highlightWidget.OutlineColor = new Color(0, 128, 255);
                     m_splitLabelWidget.IsVisible = true;
                 }
             }
