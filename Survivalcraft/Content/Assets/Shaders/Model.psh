@@ -6,11 +6,21 @@ SamplerState u_samplerState;
 float u_alphaThreshold;
 #endif
 float3 u_fogColor;
+float3 u_viewPosition;
+float u_time;
+
+// 材质参数
+static const float u_ambientStrength = 0.65;    // 环境光强度
+static const float u_diffuseStrength = 0.8;     // 漫反射强度
+static const float u_specularStrength = 0.3;    // 高光强度
+static const float u_roughness = 32.0;          // 粗糙度
+static const float u_darknessFactor = 1.0;      // 昏暗因子
 
 void main(
 	in float4 v_color : COLOR,
 	in float2 v_texcoord: TEXCOORD,
 	in float v_fog : FOG,
+	in float3 v_worldNormal : NORMAL,
 	out float4 svTarget: SV_TARGET
 )
 {
@@ -18,13 +28,45 @@ void main(
 	float4 result = v_color;
 
 	// Texture
-	result *= u_texture.Sample(u_samplerState, v_texcoord);
+	float4 texColor = u_texture.Sample(u_samplerState, v_texcoord);
+	result *= texColor;
 	
 	// Alpha threshold
 #ifdef ALPHATESTED
 	if (result.a <= u_alphaThreshold)
 		discard;
 #endif
+
+	// 基础光照计算
+	float3 normal = normalize(v_worldNormal);
+	
+	// 环境光
+	float timeOfDay = (sin(u_time * 0.1) + 1.0) * 0.5;
+	float ambientVariation = lerp(0.9, 1.1, timeOfDay);
+	float3 ambient = u_ambientStrength * ambientVariation * float3(1.0, 0.95, 0.8);
+
+	// 主光源（太阳光）
+	float3 mainLightDir = normalize(float3(1.0, 1.0, -0.5));
+	float mainDiffuse = max(dot(normal, mainLightDir), 0.0) * u_diffuseStrength;
+	
+	// 天空光
+	float3 skyLightDir = float3(0.0, 1.0, 0.0);
+	float skyDiffuse = max(dot(normal, skyLightDir), 0.0) * 0.2;
+
+	// 合并漫反射
+	float3 diffuse = (mainDiffuse + skyDiffuse) * u_darknessFactor * float3(1.0, 0.98, 0.95);
+
+	// 组合光照
+	float3 lighting = (ambient + diffuse);
+	float heightFactor = normal.y * 0.1 + 0.9;
+	lighting *= heightFactor;
+
+	// 应用光照
+	result.rgb *= lighting;
+
+	// 动态阴影
+	float shadowFactor = lerp(0.9, 1.0, timeOfDay) + (sin(u_time * 0.2) * 0.03);
+	result.rgb *= shadowFactor;
 
 	// Fog
 	float4 premultipliedFogColor = float4(u_fogColor * result.a, result.a);
