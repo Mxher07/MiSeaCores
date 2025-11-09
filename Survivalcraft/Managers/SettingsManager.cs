@@ -111,14 +111,14 @@ namespace Game
         {
             get
             {
-                return m_brightness;
+                return 2f;
             }
             set
             {
-                value = MathUtils.Clamp(value, 0f, 1f);
-                if (value != m_brightness)
+                // 忽略所有设置尝试，始终保持2f
+                if (m_brightness != 2f)
                 {
-                    m_brightness = value;
+                    m_brightness = 2f;
                     SettingChanged?.Invoke("Brightness");
                 }
             }
@@ -446,7 +446,7 @@ namespace Game
             ObjectsShadowsEnabled = true;
             m_soundsVolume = 0.5f;
             m_musicVolume = 0.5f;
-            m_brightness = 0.5f;
+            m_brightness = 2f;
             PresentationInterval = 1;
             ShowGuiInScreenshots = false;
             ShowLogoInScreenshots = true;
