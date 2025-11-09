@@ -53,8 +53,11 @@
         <LabelWidget Name="LevelLabel" TextAnchor="HorizontalCenter" Margin="8, 0" FontScale="0.6" VerticalAlignment="Center"  DropShadow="true" Color="255, 255, 255"/>
         <ValueBarWidget Name="FoodBar" LayoutDirection="Horizontal" Margin="8, 0" VerticalAlignment="Center" BarsCount="10" BarBlending="false" HalfBars="true" LitBarColor="150, 170, 190" UnlitBarColor="64, 64, 64, 255" BarSize="15, 16" Spacing="-1.5" BarSubtexture="{Textures/Atlas/FoodBar}" TextureLinearFilter="true"/>
     </StackPanelWidget>
+    <StackPanelWidget Direction="Vertical" VerticalAlignment="Far" HorizontalAlignment="Center" IsHitTestVisible="false">
     <MessageWidget Name="Message" HorizontalAlignment="Center" Margin="140, 6" IsHitTestVisible="false"/>
-</StackPanelWidget>
+    <LabelWidget Name="ID" FontScale="0.5" Text="TestVersion:Do Not Public!" HorizontalAlignment="Center" Color="74, 82, 74" DropShadow="true" TextAnchor="HorizontalCenter" />
+      </StackPanelWidget>
+  </StackPanelWidget>
 
       <StackPanelWidget Name="LeftControlsContainer" Direction="Vertical" HorizontalAlignment="Near" VerticalAlignment="Near" IsHitTestVisible="false">
         <BitmapButtonWidget Name="BackButton" Text="[GameWidget:3]" Size="64, 64" NormalSubtexture="{Textures/Atlas/BackButton}" ClickedSubtexture="{Textures/Atlas/BackButton_Pressed}" Margin="0, 3" />

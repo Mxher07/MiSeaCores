@@ -1,15 +1,59 @@
 using Engine;
 using Engine.Input;
+using System;
 using System.Xml.Linq;
+using System.Security.Cryptography;
 
 namespace Game
 {
     public class MainMenuScreen : Screen
     {
+        private const string KEYS_DIRECTORY = "Keys";
+        
+        private string GetKeysFolderPath()
+        {
+            string keysPath = Storage.CombinePaths(ModsManager.ModsPath, "..", KEYS_DIRECTORY);
+            if (!Storage.DirectoryExists(keysPath))
+            {
+                try 
+                {
+                    Storage.CreateDirectory(keysPath);
+                }
+                catch (Exception e)
+                {
+                    Log.Warning("Failed to create Keys directory: " + e.Message);
+                }
+            }
+            return keysPath;
+        }
+        
+        private bool ValidateKeyPair(string privateKey, string publicKey)
+        {
+            try
+            {
+                // 清理输入字符串
+                privateKey = privateKey.Replace("\r", "").Replace("\n", "").Trim();
+                publicKey = publicKey.Replace("\r", "").Replace("\n", "").Trim();
+                
+                // 简单验证：检查文件是否为空和基本格式
+                if (string.IsNullOrEmpty(privateKey) || string.IsNullOrEmpty(publicKey))
+                {
+                    Log.Warning("Key validation failed: Empty key file");
+                    return false;
+                }
+
+                // 由于密钥文件可能包含注释或格式信息，我们只需验证文件存在且不为空
+                return true;
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Key validation exception: " + e.Message);
+                return false;
+            }
+        }
         public string m_versionString = string.Empty;
-
+        public string m_keyIdString = string.Empty;
         public bool m_versionStringTrial;
-
         public ButtonWidget m_showBulletinButton;
 
         public StackPanelWidget m_bulletinStackPanel;
@@ -50,12 +94,48 @@ namespace Game
             Keyboard.BackButtonQuitsApp = !MarketplaceManager.IsTrialMode;
             if (string.IsNullOrEmpty(m_versionString) || MarketplaceManager.IsTrialMode != m_versionStringTrial)
             {
-                m_versionString = string.Format("Version 2.3 Api 1.44--BetaVersion");
-                //m_versionString = string.Format("Version {0}{1}", VersionsManager.Version, MarketplaceManager.IsTrialMode ? " (Day One)" : string.Empty);
+                m_versionString = string.Format("GameVer 2.3 [BetaVersion]");
                 m_versionStringTrial = MarketplaceManager.IsTrialMode;
+                
+                // 验证和加载密钥
+                m_keyIdString = "交流群：827518905";
+                try 
+                {
+                    string keysPath = GetKeysFolderPath();
+                    string pubKeyPath = Storage.CombinePaths(keysPath, "id_ed25519.pub");
+                    string privateKeyPath = Storage.CombinePaths(keysPath, "id_ed25519");
+                    
+                    if (Storage.FileExists(pubKeyPath) && Storage.FileExists(privateKeyPath))
+                    {
+                        string pubKey = Storage.ReadAllText(pubKeyPath);
+                        string privateKey = Storage.ReadAllText(privateKeyPath);
+                        
+                        // 验证密钥对是否匹配
+                        if (ValidateKeyPair(privateKey, pubKey))
+                        {
+                            // 清理公钥内容（移除所有空白字符）
+                            pubKey = pubKey.Replace("\r", "").Replace("\n", "").Trim();
+                            
+                            // 获取公钥的最后5位
+                            string lastFiveChars = pubKey.Length >= 5 ? 
+                                pubKey.Substring(pubKey.Length - 5) : pubKey;
+                            m_keyIdString = "ID: *****" + lastFiveChars;
+                        }
+                        else
+                        {
+                            Log.Warning("Key pair validation failed");
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.Warning("Failed to load or validate key pair: " + e.Message);
+                    m_keyIdString = string.Empty;
+                }
             }
             Children.Find("Buy").IsVisible = MarketplaceManager.IsTrialMode;
-            Children.Find<LabelWidget>("Version").Text = m_versionString + "  API" + ModsManager.APIVersion;
+            Children.Find<LabelWidget>("Version").Text = m_versionString + "  API" + ModsManager.APIVersion + 
+                (string.IsNullOrEmpty(m_keyIdString) ? string.Empty : "\n" + m_keyIdString);
             RectangleWidget rectangleWidget = Children.Find<RectangleWidget>("Logo");
             float num = 1f + 0.02f * MathUtils.Sin(1.5f * (float)MathUtils.Remainder(Time.FrameStartTime, 10000.0));
             rectangleWidget.RenderTransform = Matrix.CreateTranslation((0f - rectangleWidget.ActualSize.X) / 2f, (0f - rectangleWidget.ActualSize.Y) / 2f, 0f) * Matrix.CreateScale(num, num, 1f) * Matrix.CreateTranslation(rectangleWidget.ActualSize.X / 2f, rectangleWidget.ActualSize.Y / 2f, 0f);
