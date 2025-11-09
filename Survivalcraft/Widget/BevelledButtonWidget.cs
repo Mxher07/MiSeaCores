@@ -145,32 +145,12 @@ namespace Game
             Color = Color.White;
             BevelSize = 2f;
             
-            // 尝试加载按钮样式
-            XElement node = LoadButtonStyle("Styles/ButtonStyle_70x60");
-
-            try 
-            {
-                LoadChildren(this, node);
-                m_rectangleWidget = Children.Find<BevelledRectangleWidget>("BevelledButton.Rectangle");
-                m_imageWidget = Children.Find<RectangleWidget>("BevelledButton.Image");
-                m_labelWidget = Children.Find<LabelWidget>("BevelledButton.Label");
-                m_clickableWidget = Children.Find<ClickableWidget>("BevelledButton.Clickable");
-                m_labelWidget.VerticalAlignment = WidgetAlignment.Center;
-                LoadProperties(this, node);
-            }
-            catch
-            {
-                // 如果加载失败,创建一个基本按钮
-                m_rectangleWidget = new BevelledRectangleWidget();
-                m_imageWidget = new RectangleWidget();
-                m_labelWidget = new LabelWidget();
-                m_clickableWidget = new ClickableWidget();
-
-                Children.Add(m_rectangleWidget);
-                Children.Add(m_imageWidget);
-                Children.Add(m_labelWidget);
-                Children.Add(m_clickableWidget);
-            }
+            XElement node = ContentManager.Get<XElement>("Styles/ButtonStyle_70x60");
+            LoadContents(this, node);
+            m_rectangleWidget = Children.Find<BevelledRectangleWidget>("BevelledButton.Rectangle");
+            m_imageWidget = Children.Find<RectangleWidget>("BevelledButton.Image");
+            m_labelWidget = Children.Find<LabelWidget>("BevelledButton.Label");
+            m_clickableWidget = Children.Find<ClickableWidget>("BevelledButton.Clickable");
         }
 
         public override void MeasureOverride(Vector2 parentAvailableSize)

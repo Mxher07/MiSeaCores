@@ -1,1 +1,22 @@
-<BevelledButtonWidget xmlns="runtime-namespace:Game" Size="70, 60"/>
+<?xml version="1.0" encoding="utf-8"?>
+<BevelledButtonWidget xmlns="runtime-namespace:Game" Size="70, 60">
+  <BevelledRectangleWidget Name="BevelledButton.Rectangle" 
+                        HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Stretch"
+                        BevelSize="2"
+                        BevelColor="128, 128, 128"
+                        CenterColor="80, 80, 80"
+                        AmbientLight="1"
+                        DirectionalLight="0.4" />
+  <RectangleWidget Name="BevelledButton.Image"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center" />
+  <LabelWidget Name="BevelledButton.Label"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             Text=""
+             Color="255, 255, 255" />
+  <ClickableWidget Name="BevelledButton.Clickable"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch" />
+</BevelledButtonWidget>
