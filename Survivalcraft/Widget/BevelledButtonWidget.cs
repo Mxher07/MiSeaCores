@@ -144,13 +144,14 @@ namespace Game
         {
             Color = Color.White;
             BevelSize = 2f;
-            
-            XElement node = ContentManager.Get<XElement>("Styles/ButtonStyle_70x60");
-            LoadContents(this, node);
+            XElement node = ContentManager.Get<XElement>("Widgets/BevelledButtonContents");
+            LoadChildren(this, node);
             m_rectangleWidget = Children.Find<BevelledRectangleWidget>("BevelledButton.Rectangle");
             m_imageWidget = Children.Find<RectangleWidget>("BevelledButton.Image");
             m_labelWidget = Children.Find<LabelWidget>("BevelledButton.Label");
             m_clickableWidget = Children.Find<ClickableWidget>("BevelledButton.Clickable");
+            m_labelWidget.VerticalAlignment = WidgetAlignment.Center;
+            LoadProperties(this, node);
         }
 
         public override void MeasureOverride(Vector2 parentAvailableSize)
