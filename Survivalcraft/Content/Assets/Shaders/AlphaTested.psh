@@ -3,31 +3,73 @@
 Texture2D u_texture;
 SamplerState u_samplerState;
 float3 u_fogColor;
+float3 u_viewPosition;  // 视角位置
+float u_time;          // 时间变量用于环境光变化
+
+// 材质参数
+static const float u_ambientStrength = 0.65;    // 环境光强度 (显著提高)
+static const float u_diffuseStrength = 0.8;     // 漫反射强度 (提高)
+static const float u_specularStrength = 0.3;    // 高光强度
+static const float u_roughness = 32.0;          // 粗糙度
+static const float u_darknessFactor = 1.0;      // 昏暗因子 (移除昏暗效果)
 
 void main(
 	in float4 v_color : COLOR,
 	in float2 v_texcoord: TEXCOORD,
 	in float v_fog : FOG,
+	in float3 v_worldNormal : NORMAL,    // 世界空间法线
 	out float4 svTarget: SV_TARGET
 )
 {
-	// Color
-	float4 result = v_color;
+    // 基础颜色
+    float4 result = v_color;
+    float4 texColor = u_texture.Sample(u_samplerState, v_texcoord);
+    result *= texColor;
 
-	// Texture
-	result *= u_texture.Sample(u_samplerState, v_texcoord);
-	
-	// Alpha threshold
+    // Alpha测试
 #ifdef ALPHATESTED
-	if (result.a <= 0.5)
-		discard;
+    if (result.a <= 0.5)
+        discard;
 #endif
 
-	// Fog
-	result = lerp(result, float4(u_fogColor, 1), v_fog);
-	
-	// Return
-	svTarget = result;
+    // 计算基础光照
+    float3 normal = normalize(v_worldNormal);
+    
+    // 环境光（调整强度实现适中的亮度）
+    float timeOfDay = (sin(u_time * 0.1) + 1.0) * 0.5; // 创建一个0-1的时间循环
+    float ambientVariation = lerp(0.9, 1.1, timeOfDay);
+    float3 ambient = u_ambientStrength * ambientVariation * float3(1.0, 0.95, 0.8); // 略微偏暖的环境光
+
+    // 主光源漫反射（太阳光）
+    float3 mainLightDir = normalize(float3(1.0, 1.0, -0.5));
+    float mainDiffuse = max(dot(normal, mainLightDir), 0.0) * u_diffuseStrength;
+    
+    // 次级光源（模拟天空光）
+    float3 skyLightDir = float3(0.0, 1.0, 0.0);
+    float skyDiffuse = max(dot(normal, skyLightDir), 0.0) * 0.2;
+
+    // 合并漫反射
+    float3 diffuse = (mainDiffuse + skyDiffuse) * u_darknessFactor * float3(1.0, 0.98, 0.95);
+
+    // 组合所有光照
+    float3 lighting = (ambient + diffuse);
+    
+    // 添加基于高度的渐变
+    float heightFactor = normal.y * 0.1 + 0.9; // 基于法线的Y分量添加subtle的明暗变化
+    lighting *= heightFactor;
+
+    // 应用到颜色
+    result.rgb *= lighting;
+
+    // 动态阴影和环境光遮蔽
+    float shadowFactor = lerp(0.9, 1.0, timeOfDay) + (sin(u_time * 0.2) * 0.03);
+    result.rgb *= shadowFactor;
+
+    // 雾效果
+    result = lerp(result, float4(u_fogColor, 1), v_fog);
+
+    // 返回最终颜色
+    svTarget = result;
 }
 
 #endif
@@ -41,30 +83,69 @@ precision mediump float;
 
 uniform sampler2D u_texture;
 uniform vec3 u_fogColor;
+uniform vec3 u_viewPosition;
+uniform float u_time;
 
 varying vec4 v_color;
 varying vec2 v_texcoord;
 varying float v_fog;
-	
+varying vec3 v_normal;
+varying vec3 v_position;
+varying float v_isBlock;
+
+const float u_ambientStrength = 0.15;
+const float u_specularStrength = 0.5;
+const float u_roughness = 32.0;
+const float u_darknessFactor = 0.7;
+
 void main()
 {
-	// Color
-	vec4 result = v_color;
+    // 基础颜色
+    vec4 result = v_color;
+    vec4 texColor = texture2D(u_texture, v_texcoord);
+    result *= texColor;
 
-	// Texture
-	result *= texture2D(u_texture, v_texcoord);
-	
-	// Alpha threshold
+    // Alpha测试
 #ifdef ALPHATESTED
-	if (result.a <= 0.5)
-		discard;
+    if (result.a <= 0.5)
+        discard;
 #endif
 
-	// Fog
-	result = mix(result, vec4(u_fogColor, 1), v_fog);
-	
-	// Return
-	gl_FragColor = result;
+    // 计算基础光照
+    vec3 normal = normalize(v_normal);
+    vec3 viewDir = normalize(u_viewPosition - v_position);
+    
+    // 环境光
+    float ambientVariation = sin(u_time * 0.1) * 0.05 + 0.95;
+    vec3 ambient = u_ambientStrength * ambientVariation * vec3(1.0);
+
+    // 漫反射
+    vec3 lightDir = normalize(vec3(1.0, 1.0, -0.5));
+    float diff = max(dot(normal, lightDir), 0.0) * u_darknessFactor;
+    vec3 diffuse = diff * vec3(1.0);
+
+    // 高光反射 (仅对非方块物体)
+    vec3 specular = vec3(0.0);
+    if (v_isBlock < 0.5)
+    {
+        vec3 reflectDir = reflect(-lightDir, normal);
+        float spec = pow(max(dot(viewDir, reflectDir), 0.0), u_roughness);
+        specular = u_specularStrength * spec * vec3(1.0);
+    }
+
+    // 组合所有光照分量
+    vec3 lighting = ambient + diffuse + specular;
+    result.rgb *= lighting;
+
+    // 添加额外的阴影效果
+    float shadowFactor = 0.85 + (sin(u_time * 0.2) * 0.05);
+    result.rgb *= shadowFactor;
+
+    // 雾效果
+    result = mix(result, vec4(u_fogColor, 1.0), v_fog);
+    
+    // Return
+    gl_FragColor = result;
 }
 
 #endif
