@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 这是一个通用的现代按钮样式 -->
+<ButtonWidget xmlns="runtime-namespace:Game" Size="70, 60">
+    <RectangleWidget FillColor="0, 0, 0, 128" OutlineColor="128, 255, 255, 180" OutlineThickness="3">
+        <!-- 基础背景 -->
+        <StackPanelWidget Direction="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!-- 文本标签 -->
+            <LabelWidget Name="Label" Text="[ButtonText]" FontScale="1" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Color="255, 255, 255, 255" />
+        </StackPanelWidget>
+        
+        <!-- 可点击区域 -->
+        <ClickableWidget Name="Clickable" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+    </RectangleWidget>
+</ButtonWidget>

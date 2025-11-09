@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BitmapButtonWidget xmlns="runtime-namespace:Game" Size="70, 60">
+    <RectangleWidget Name="Button.Rectangle" FillColor="0, 0, 0, 128" OutlineColor="128, 255, 255, 180" OutlineThickness="3">
+        <LabelWidget Name="Button.Label" Text="[ButtonText]" FontScale="1" 
+            HorizontalAlignment="Center" VerticalAlignment="Center" 
+            Color="255, 255, 255, 255" />
+        <ClickableWidget Name="Button.Clickable" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+    </RectangleWidget>
+</BitmapButtonWidget>

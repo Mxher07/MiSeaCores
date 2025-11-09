@@ -1,1 +1,31 @@
-<BevelledButtonWidget xmlns="runtime-namespace:Game" Size="70, 60"   />
+<BevelledButtonWidget xmlns="runtime-namespace:Game" Size="70, 60">
+    <!-- 主背景（半透明深色） -->
+    <RectangleWidget FillColor="0, 0, 0, 128" OutlineColor="0, 0, 0, 0" >
+        <!-- 左倾斜遮罩 -->
+        <CanvasWidget HorizontalAlignment="Left" VerticalAlignment="Stretch" Size="15, 0">
+            <RectangleWidget FillColor="0, 0, 0, 0" Size="15, 60" 
+                RenderTransform="1, 0, -0.3, 1, 0, 0" />
+        </CanvasWidget>
+        
+        <!-- 右倾斜遮罩 -->
+        <CanvasWidget HorizontalAlignment="Right" VerticalAlignment="Stretch" Size="15, 0">
+            <RectangleWidget FillColor="0, 0, 0, 0" Size="15, 60" 
+                RenderTransform="1, 0, 0.3, 1, 0, 0" />
+        </CanvasWidget>
+        
+        <!-- 边框效果 -->
+        <RectangleWidget Name="Border" OutlineColor="128, 255, 255, 180" OutlineThickness="3" 
+            FillColor="0, 0, 0, 0" RenderTransform="1, 0, -0.2, 1, 0, 0" />
+            
+        <!-- 悬停时的高光效果 -->
+        <RectangleWidget Name="Highlight" FillColor="255, 255, 255, 0" 
+            RenderTransform="1, 0, -0.2, 1, 0, 0" />
+            
+        <!-- 文本内容容器 -->
+        <StackPanelWidget Direction="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <LabelWidget Name="Label" Text="[ButtonText]" FontScale="1" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                TextColor="255, 255, 255, 255" />
+        </StackPanelWidget>
+    </RectangleWidget>
+</BevelledButtonWidget>
