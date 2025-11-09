@@ -50,7 +50,8 @@ namespace Game
             Keyboard.BackButtonQuitsApp = !MarketplaceManager.IsTrialMode;
             if (string.IsNullOrEmpty(m_versionString) || MarketplaceManager.IsTrialMode != m_versionStringTrial)
             {
-                m_versionString = string.Format("Version {0}{1}", VersionsManager.Version, MarketplaceManager.IsTrialMode ? " (Day One)" : string.Empty);
+                m_versionString = string.Format("Version 2.3 Api 1.44--BetaVersion");
+                //m_versionString = string.Format("Version {0}{1}", VersionsManager.Version, MarketplaceManager.IsTrialMode ? " (Day One)" : string.Empty);
                 m_versionStringTrial = MarketplaceManager.IsTrialMode;
             }
             Children.Find("Buy").IsVisible = MarketplaceManager.IsTrialMode;
@@ -76,17 +77,17 @@ namespace Game
             }
             if (Children.Find<ButtonWidget>("Buy").IsClicked)
             {
-                MarketplaceManager.ShowMarketplace();
+                //MarketplaceManager.ShowMarketplace();
             }
             if (m_showBulletinButton.IsClicked)
             {
                 if(MotdManager.m_bulletin != null && MotdManager.m_bulletin.Title.ToLower() != "null")
                 {
-                    MotdManager.ShowBulletin();
+                    //MotdManager.ShowBulletin();
                 }
                 else
                 {
-                    DialogsManager.ShowDialog(null, new MessageDialog("¹«¸æ»ñÈ¡Ê§°Ü", "µ±Ç°ÔÝÎÞ·¢²¼¹«¸æ£¬\n»òÕßÃ»ÓÐÁªÍø»ñÈ¡¹«¸æÐÅÏ¢", LanguageControl.Ok, null, null));
+                    //DialogsManager.ShowDialog(null, new MessageDialog("ï¿½ï¿½ï¿½ï¿½ï¿½È¡Ê§ï¿½ï¿½", "ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ£¬\nï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢", LanguageControl.Ok, null, null));
                 }
             }
             if ((Input.Back && !Keyboard.BackButtonQuitsApp) || Input.IsKeyDownOnce(Key.Escape))
