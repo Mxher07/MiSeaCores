@@ -8,6 +8,7 @@ namespace Game
         public BevelledButtonWidget m_virtualRealityButton;
         public TextBoxWidget m_gammaInput;
         public ContainerWidget m_vrPanel;
+        public float m_lastBrightness;
         
         public SettingsGraphicsScreen()
         {
@@ -23,6 +24,7 @@ namespace Game
             {
                 SettingsManager.Brightness = 2f;
             }
+            m_lastBrightness = SettingsManager.Brightness;
         }
 
         public override void Update()
@@ -32,7 +34,7 @@ namespace Game
             m_virtualRealityButton.Text = (SettingsManager.UseVr ? "Enabled" : "Disabled");
             
             // Handle gamma input
-            if (m_gammaInput.Text != SettingsManager.Brightness.ToString("0.##"))
+            if (!string.IsNullOrEmpty(m_gammaInput.Text) && m_gammaInput.Text != SettingsManager.Brightness.ToString("0.##"))
             {
                 if (float.TryParse(m_gammaInput.Text, out float gamma))
                 {
@@ -40,6 +42,17 @@ namespace Game
                     gamma = MathUtils.Clamp(gamma, 0.1f, 100f);
                     SettingsManager.Brightness = gamma;
                     m_gammaInput.Text = gamma.ToString("0.##");
+                    
+                    // 如果亮度值改变了，更新光照参数
+                    if (gamma != m_lastBrightness && GameManager.Project != null)
+                    {
+                        var subsystemSky = GameManager.Project.FindSubsystem<SubsystemSky>(true);
+                        if (subsystemSky != null)
+                        {
+                            subsystemSky.UpdateLightAndViewParameters();
+                        }
+                        m_lastBrightness = gamma;
+                    }
                 }
             }
             
