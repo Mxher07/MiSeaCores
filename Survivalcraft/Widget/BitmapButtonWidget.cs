@@ -85,7 +85,11 @@ namespace Game
         public BitmapButtonWidget()
         {
             Color = Color.White;
-            XElement node = ContentManager.Get<XElement>("Widgets/BitmapButtonContents");
+            XElement node = ContentManager.Get<XElement>("Styles/ButtonStyle_Base");
+            if (node == null)
+            {
+                node = ContentManager.Get<XElement>("Widgets/BitmapButtonContents");
+            }
             LoadChildren(this, node);
             m_rectangleWidget = Children.Find<RectangleWidget>("Button.Rectangle");
             m_imageWidget = Children.Find<RectangleWidget>("Button.Image");
