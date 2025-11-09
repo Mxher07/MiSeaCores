@@ -1101,6 +1101,33 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
+  <!-- Content Auto-Packaging -->
+  <Target Name="PackageContent" AfterTargets="Build">
+    <PropertyGroup>
+      <ContentSourcePath>$(ProjectDir)Content</ContentSourcePath>
+      <ContentZipPath>$(OutputPath)Content.zip</ContentZipPath>
+    </PropertyGroup>
+    
+    <Message Text="Packaging Content folder to ZIP..." Importance="high" />
+    
+    <!-- Delete existing zip if it exists -->
+    <Delete Files="$(ContentZipPath)" Condition="Exists('$(ContentZipPath)')" />
+    
+    <!-- Create Content.zip -->
+    <ZipDirectory
+        SourceDirectory="$(ContentSourcePath)"
+        DestinationFile="$(ContentZipPath)"
+        Overwrite="true" />
+        
+    <Message Text="Content packaged successfully to: $(ContentZipPath)" Importance="high" />
+  </Target>
+
+  <!-- Add System.IO.Compression for ZIP functionality -->
+  <ItemGroup>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+  </ItemGroup>
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
