@@ -409,7 +409,7 @@ public static class ModsManager
                     if (ms == ".scmod")
                     {
                         Stream keepOpenStream = ModsManageContentScreen.GetDecipherStream(stream);
-                        var modEntity = new ModEntity(ZipArchive.Open(keepOpenStream, true));
+                        var modEntity = new ModEntity(Game.ZipArchive.Open(keepOpenStream, true));
                         if (modEntity.modInfo == null) continue;
                         if (string.IsNullOrEmpty(modEntity.modInfo.PackageName)) continue;
                         ModList.Add(modEntity);
