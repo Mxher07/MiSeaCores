@@ -41,6 +41,7 @@
             </CanvasWidget>
           </StackPanelWidget>
       
+
         </CanvasWidget>
 
       </StackPanelWidget>
@@ -54,7 +55,8 @@
         <ValueBarWidget Name="FoodBar" LayoutDirection="Horizontal" Margin="8, 0" VerticalAlignment="Center" BarsCount="10" BarBlending="false" HalfBars="true" LitBarColor="150, 170, 190" UnlitBarColor="64, 64, 64, 255" BarSize="15, 16" Spacing="-1.5" BarSubtexture="{Textures/Atlas/FoodBar}" TextureLinearFilter="true"/>
     </StackPanelWidget>
     <StackPanelWidget Direction="Vertical" VerticalAlignment="Far" HorizontalAlignment="Center" IsHitTestVisible="false">
-    <MessageWidget Name="Message" HorizontalAlignment="Center" Margin="140, 6" IsHitTestVisible="false"/>
+    <ValueBarWidget Name="LegsStaminaBar" LayoutDirection="Horizontal" Margin="8, 0" VerticalAlignment="Center" BarsCount="3" Spacing="-1" BarBlending="false" HalfBars="true" LitBarColor="0, 0, 0" UnlitBarColor="64, 64, 64, 255" BarSize="15, 16" BarSubtexture="{Textures/Atlas/LStaminaBar}" TextureLinearFilter="true"/>
+    <ValueBarWidget Name="ArmsStaminaBar" LayoutDirection="Horizontal" Margin="8, 0" VerticalAlignment="Center" BarsCount="3" Spacing="-1" BarBlending="false" HalfBars="true" LitBarColor="0, 0, 0" UnlitBarColor="64, 64, 64, 255" BarSize="15, 16" BarSubtexture="{Textures/Atlas/AStaminaBar}" TextureLinearFilter="true"/>
     <LabelWidget Name="ID" FontScale="0.5" Text="TestVersion:Do Not Public!" HorizontalAlignment="Center" Color="74, 82, 74" DropShadow="true" TextAnchor="HorizontalCenter" />
       </StackPanelWidget>
   </StackPanelWidget>

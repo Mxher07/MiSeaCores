@@ -56,6 +56,17 @@ namespace Game
             set;
         }
 
+        public ComponentLegsStamina ComponentLegsStamina
+        {
+            get;
+            set;
+        }
+        public ComponentArmsStamina ComponentArmsStamina
+        {
+            get;
+            set;
+        }
+
         public ComponentBlockHighlight ComponentBlockHighlight
         {
             get;

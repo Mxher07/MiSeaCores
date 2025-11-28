@@ -83,11 +83,15 @@ namespace Game
         {
             get
             {
-                return m_stamina;
+                //这里应该包含上肢和下肢体力，所以实现
+                return (m_componentPlayer.ComponentArmsStamina.m_stamina + m_componentPlayer.ComponentLegsStamina.m_stamina) / 2f;
+
+
             }
             set
             {
-                m_stamina = MathUtils.Saturate(value);
+                m_componentPlayer.ComponentLegsStamina.m_stamina = MathUtils.Saturate(value);
+                m_componentPlayer.ComponentArmsStamina.m_stamina = MathUtils.Saturate(value);
             }
         }
 

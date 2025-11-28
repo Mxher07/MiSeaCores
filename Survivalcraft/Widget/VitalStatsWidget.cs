@@ -32,6 +32,8 @@ namespace Game
         public LinkWidget m_temperatureLink;
 
         public ValueBarWidget m_temperatureValueBar;
+        public ValueBarWidget m_legsStaminaValueBar;
+        public ValueBarWidget m_armsStaminaValueBar;
 
         public LinkWidget m_wetnessLink;
 
@@ -77,6 +79,8 @@ namespace Game
             m_sleepValueBar = Children.Find<ValueBarWidget>("SleepValueBar");
             m_temperatureLink = Children.Find<LinkWidget>("TemperatureLink");
             m_temperatureValueBar = Children.Find<ValueBarWidget>("TemperatureValueBar");
+            m_legsStaminaValueBar = Children.Find<ValueBarWidget>("LegsStaminaBar");
+            m_armsStaminaValueBar = Children.Find<ValueBarWidget>("ArmsStaminaBar");
             m_wetnessLink = Children.Find<LinkWidget>("WetnessLink");
             m_wetnessValueBar = Children.Find<ValueBarWidget>("WetnessValueBar");
             m_chokeButton = Children.Find<ButtonWidget>("ChokeButton");
@@ -99,7 +103,7 @@ namespace Game
             string languageType = (ModsManager.Configs.ContainsKey("Language")) ? ModsManager.Configs["Language"] : "zh-CN";
             if(languageType == "zh-CN")
             {
-                m_titleLabel.Text = $"{m_componentPlayer.PlayerData.Name}, µÈ¼¶ {MathUtils.Floor(m_componentPlayer.PlayerData.Level)}  " + ((m_componentPlayer.PlayerData.PlayerClass == PlayerClass.Male) ? "ÄÐÐÔ" : "Å®ÐÔ");
+                m_titleLabel.Text = $"{m_componentPlayer.PlayerData.Name}, ï¿½È¼ï¿½ {MathUtils.Floor(m_componentPlayer.PlayerData.Level)}  " + ((m_componentPlayer.PlayerData.PlayerClass == PlayerClass.Male) ? "ï¿½ï¿½ï¿½ï¿½" : "Å®ï¿½ï¿½");
             }
             else
             {
@@ -110,6 +114,8 @@ namespace Game
             m_foodValueBar.Value = m_componentPlayer.ComponentVitalStats.Food;
             m_sleepValueBar.Value = m_componentPlayer.ComponentVitalStats.Sleep;
             m_temperatureValueBar.Value = m_componentPlayer.ComponentVitalStats.Temperature / 24f;
+            m_legsStaminaValueBar.Value = m_componentPlayer.ComponentLegsStamina.m_stamina;
+            m_armsStaminaValueBar.Value = m_componentPlayer.ComponentArmsStamina.m_stamina;
             m_wetnessValueBar.Value = m_componentPlayer.ComponentVitalStats.Wetness;
             m_experienceValueBar.Value = m_componentPlayer.PlayerData.Level - MathUtils.Floor(m_componentPlayer.PlayerData.Level);
             m_strengthLabel.Text = string.Format(CultureInfo.InvariantCulture, "x {0:0.00}", m_componentPlayer.ComponentLevel.StrengthFactor);

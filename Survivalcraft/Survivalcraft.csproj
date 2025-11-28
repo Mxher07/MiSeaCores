@@ -683,6 +683,8 @@
     <Compile Include="Component\ComponentUdder.cs" />
     <Compile Include="Component\ComponentVitalStats.cs" />
     <Compile Include="Component\ComponentWalkAroundBehavior.cs" />
+    <Compile Include="Component\ComponentLegsStamina.cs" />
+    <Compile Include="Component\ComponentArmsStamina.cs" />
     <Compile Include="ContentProvider\SPMBoxExternalContentProvider.cs" />
     <Compile Include="Game\ActiveExternalContentInfo.cs" />
     <Compile Include="Game\AdjustableDelayGateElectricElement.cs" />

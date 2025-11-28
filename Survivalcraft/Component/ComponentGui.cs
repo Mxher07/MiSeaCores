@@ -210,6 +210,16 @@ namespace Game
                 }
             }
         }
+        public ValueBarWidget LegsStaminaBarWidget
+        {
+            get;
+            set;
+        }
+        public ValueBarWidget ArmsStaminaBarWidget
+        {
+            get;
+            set;
+        }
 
         public UpdateOrder UpdateOrder => UpdateOrder.Default;
 
@@ -225,6 +235,8 @@ namespace Game
                 StartTime = Time.RealTime + delay
             };
         }
+        //Example
+        //ComponentPlayer?.ComponentGui.DisplaySmallMessage("This is a small message", new Color(255, 0, 0, 255), blinking: true, playNotificationSound: true);
         public virtual void DisplaySmallMessage(string text, Color color, bool blinking, bool playNotificationSound)
         {
             m_messageWidget.DisplayMessage(text, color, blinking);
@@ -288,6 +300,8 @@ namespace Game
             TemperatureBarWidget = guiWidget.Children.Find<ValueBarWidget>("TemperatureBar");
             LevelLabelWidget = guiWidget.Children.Find<LabelWidget>("LevelLabel");
             m_modalPanelContainerWidget = guiWidget.Children.Find<ContainerWidget>("ModalPanelContainer");
+            LegsStaminaBarWidget = guiWidget.Children.Find<ValueBarWidget>("LegsStaminaBar");
+            ArmsStaminaBarWidget = guiWidget.Children.Find<ValueBarWidget>("ArmsStaminaBar");
             ControlsContainerWidget = guiWidget.Children.Find<ContainerWidget>("ControlsContainer");
             m_leftControlsContainerWidget = guiWidget.Children.Find<ContainerWidget>("LeftControlsContainer");
             m_rightControlsContainerWidget = guiWidget.Children.Find<ContainerWidget>("RightControlsContainer");
@@ -447,6 +461,8 @@ namespace Game
             FoodBarWidget.IsVisible = (gameMode != 0 && worldSettings.AreAdventureSurvivalMechanicsEnabled);
             TemperatureBarWidget.IsVisible = (gameMode != 0 && worldSettings.AreAdventureSurvivalMechanicsEnabled);
             LevelLabelWidget.IsVisible = (gameMode != 0 && worldSettings.AreAdventureSurvivalMechanicsEnabled);
+            LegsStaminaBarWidget.IsVisible = (gameMode != 0 && worldSettings.AreAdventureSurvivalMechanicsEnabled);
+            ArmsStaminaBarWidget.IsVisible = (gameMode != 0 && worldSettings.AreAdventureSurvivalMechanicsEnabled);
             m_creativeFlyButtonWidget.IsVisible = (gameMode == GameMode.Creative);
             m_timeOfDayButtonWidget.IsVisible = (gameMode == GameMode.Creative);
             m_lightningButtonWidget.IsVisible = (gameMode == GameMode.Creative);
@@ -685,7 +701,7 @@ namespace Game
                     }
                 }
             }
-            if (m_cameraButtonWidget.IsClicked || playerInput.SwitchCameraMode /*|| input.IsKeyDownOnce(Engine.Input.Key.V) Õâ¶Î»áµ¼ÖÂ´ò×ÖÊ±µãv´¥·¢Ïà»ú*/|| input.IsPadButtonDownOnce(Engine.Input.GamePadButton.RightThumb) || input.IsPadButtonDownOnce(Engine.Input.GamePadButton.DPadDown))
+            if (m_cameraButtonWidget.IsClicked || playerInput.SwitchCameraMode /*|| input.IsKeyDownOnce(Engine.Input.Key.V) ï¿½ï¿½Î»áµ¼ï¿½Â´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/|| input.IsPadButtonDownOnce(Engine.Input.GamePadButton.RightThumb) || input.IsPadButtonDownOnce(Engine.Input.GamePadButton.DPadDown))
             {
                 ModsManager.HookAction("OnCameraChange", modLoader => {
                     modLoader.OnCameraChange(m_componentPlayer, this);

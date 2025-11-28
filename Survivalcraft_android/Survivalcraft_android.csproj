@@ -1195,6 +1195,12 @@
     <Compile Include="..\Survivalcraft\Component\ComponentWalkAroundBehavior.cs">
       <Link>Component\ComponentWalkAroundBehavior.cs</Link>
     </Compile>
+    <Compile Include="..\Survivalcraft\Component\ComponentLegsStamina.cs">
+      <Link>Component\ComponentLegsStamina.cs</Link>
+    </Compile>
+    <Compile Include="..\Survivalcraft\Component\ComponentArmsStamina.cs">
+      <Link>Component\ComponentArmsStamina.cs</Link>
+    </Compile>
     <Compile Include="..\Survivalcraft\Dialog\BuildFurnitureDialog.cs">
       <Link>Dialog\BuildFurnitureDialog.cs</Link>
     </Compile>
