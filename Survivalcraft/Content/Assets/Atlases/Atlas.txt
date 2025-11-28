@@ -78,3 +78,5 @@ Mirror 133 623 32 32 0 0 0 0
 ScreenLayoutQuadrupleOpposite 277 293 112 64 0 0 0 0 
 ScreenLayoutTripleOpposite 453 199 112 64 0 0 0 0 
 Reticle 567 147 16 16 0 0 0 0 
+LStaminaBar 567 183 15 16 0 0 0 0
+AStaminaBar 567 183 15 16 0 0 0 0
